@@ -201,7 +201,9 @@
 		A9F1DA14184DC943004DB65F /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA13184DC943004DB65F /* CCTableViewCell.cpp */; };
 		A9F1DA18184DC943004DB65F /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA17184DC943004DB65F /* HttpClient.cpp */; };
 		A9F1DA21184DC943004DB65F /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA20184DC943004DB65F /* AppDelegate.cpp */; };
-		A9F1DA24184DC943004DB65F /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA23184DC943004DB65F /* HelloWorldScene.cpp */; };
+		A9F1DA2C184DC990004DB65F /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA2A184DC990004DB65F /* GameLayer.cpp */; };
+		A9F1DA2F184DCBBC004DB65F /* GameSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA2D184DCBBC004DB65F /* GameSprite.cpp */; };
+		A9F1DA32184DD1EE004DB65F /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA30184DD1EE004DB65F /* Tower.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -632,8 +634,12 @@
 		A9F1DA1D184DC943004DB65F /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A9F1DA1F184DC943004DB65F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		A9F1DA20184DC943004DB65F /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		A9F1DA22184DC943004DB65F /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		A9F1DA23184DC943004DB65F /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		A9F1DA2A184DC990004DB65F /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		A9F1DA2B184DC990004DB65F /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		A9F1DA2D184DCBBC004DB65F /* GameSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSprite.cpp; sourceTree = "<group>"; };
+		A9F1DA2E184DCBBC004DB65F /* GameSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSprite.h; sourceTree = "<group>"; };
+		A9F1DA30184DD1EE004DB65F /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
+		A9F1DA31184DD1EE004DB65F /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1517,8 +1523,12 @@
 			children = (
 				A9F1DA1F184DC943004DB65F /* AppDelegate.h */,
 				A9F1DA20184DC943004DB65F /* AppDelegate.cpp */,
-				A9F1DA22184DC943004DB65F /* HelloWorldScene.h */,
-				A9F1DA23184DC943004DB65F /* HelloWorldScene.cpp */,
+				A9F1DA2A184DC990004DB65F /* GameLayer.cpp */,
+				A9F1DA2B184DC990004DB65F /* GameLayer.h */,
+				A9F1DA2D184DCBBC004DB65F /* GameSprite.cpp */,
+				A9F1DA2E184DCBBC004DB65F /* GameSprite.h */,
+				A9F1DA30184DD1EE004DB65F /* Tower.cpp */,
+				A9F1DA31184DD1EE004DB65F /* Tower.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1768,7 +1778,9 @@
 				A9F1DA14184DC943004DB65F /* CCTableViewCell.cpp in Sources */,
 				A9F1DA18184DC943004DB65F /* HttpClient.cpp in Sources */,
 				A9F1DA21184DC943004DB65F /* AppDelegate.cpp in Sources */,
-				A9F1DA24184DC943004DB65F /* HelloWorldScene.cpp in Sources */,
+				A9F1DA2C184DC990004DB65F /* GameLayer.cpp in Sources */,
+				A9F1DA2F184DCBBC004DB65F /* GameSprite.cpp in Sources */,
+				A9F1DA32184DD1EE004DB65F /* Tower.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
