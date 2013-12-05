@@ -204,6 +204,7 @@
 		A9F1DA2C184DC990004DB65F /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA2A184DC990004DB65F /* GameLayer.cpp */; };
 		A9F1DA2F184DCBBC004DB65F /* GameSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA2D184DCBBC004DB65F /* GameSprite.cpp */; };
 		A9F1DA32184DD1EE004DB65F /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F1DA30184DD1EE004DB65F /* Tower.cpp */; };
+		AF7031BA185027560027FAA2 /* Mob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF7031B8185027560027FAA2 /* Mob.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -640,6 +641,8 @@
 		A9F1DA2E184DCBBC004DB65F /* GameSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSprite.h; sourceTree = "<group>"; };
 		A9F1DA30184DD1EE004DB65F /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tower.cpp; sourceTree = "<group>"; };
 		A9F1DA31184DD1EE004DB65F /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tower.h; sourceTree = "<group>"; };
+		AF7031B8185027560027FAA2 /* Mob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mob.cpp; sourceTree = "<group>"; };
+		AF7031B9185027560027FAA2 /* Mob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mob.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1529,6 +1532,8 @@
 				A9F1DA2E184DCBBC004DB65F /* GameSprite.h */,
 				A9F1DA30184DD1EE004DB65F /* Tower.cpp */,
 				A9F1DA31184DD1EE004DB65F /* Tower.h */,
+				AF7031B8185027560027FAA2 /* Mob.cpp */,
+				AF7031B9185027560027FAA2 /* Mob.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1781,6 +1786,7 @@
 				A9F1DA2C184DC990004DB65F /* GameLayer.cpp in Sources */,
 				A9F1DA2F184DCBBC004DB65F /* GameSprite.cpp in Sources */,
 				A9F1DA32184DD1EE004DB65F /* Tower.cpp in Sources */,
+				AF7031BA185027560027FAA2 /* Mob.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1912,6 +1918,7 @@
 				A9F1DA29184DC943004DB65F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
