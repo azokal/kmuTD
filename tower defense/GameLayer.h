@@ -5,6 +5,18 @@
 #include "GameSprite.h"
 
 using namespace cocos2d;
+
+typedef enum {
+    LIGHT,
+    DARK,
+    WATER,
+    FIRE,
+    NATURE,
+    EARTH,
+    NORMAL,
+    CHAOS
+} element;
+
 class GameLayer : public cocos2d::CCLayer
 {
     bool _began;
