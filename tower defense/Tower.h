@@ -11,20 +11,26 @@
 
 #include <iostream>
 #include <vector>
+#include "GameLayer.h"
 
 typedef enum {
-    BASIC
-}towerType;
+    BASIC_L1,
+    BASIC_L2
+} towerType;
 
 class Tower {
     int _dmg;
     int _range;
     float _fireRate;
+    element type;
     // add target pointer
     std::vector<towerType> upgradeList;
+    GameSprite *_sprite;
     
-    void shoot();
-    void upgrade();
+public:
+    virtual void shoot() = 0;
+    void upgrade(towerType);
+    ~Tower();
 };
 
 #endif /* defined(__tower_defense__Tower__) */
