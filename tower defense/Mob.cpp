@@ -12,7 +12,7 @@ void Mob::move() {
     //TODO:: MOVE !
 }
 
-void looseLife::looseLife(float damage, element elem) {
+void Mob::looseLife(float damage, element elem) {
     if ((elem + 1) % 6 == _elem)
         _life -= damage * 2;
     if ((elem - 1) % 6 == _elem)
