@@ -13,21 +13,31 @@
 #include <vector>
 #include "GameLayer.h"
 
+
+
 typedef enum {
     BASIC_L1,
     BASIC_L2
 } towerType;
 
+typedef struct {
+    int price;
+    int dmg;
+    int range;
+    element type;
+} infoTower;
+
 class Tower {
+    int _price;
     int _dmg;
     int _range;
     float _fireRate;
-    element type;
+    element _type;
     // add target pointer
     std::vector<towerType> upgradeList;
     GameSprite *_sprite;
-    
 public:
+    static infoTower stat();
     virtual void shoot() = 0;
     void upgrade(towerType);
     ~Tower();

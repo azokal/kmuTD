@@ -1,6 +1,7 @@
 #ifndef __GAMELAYER_H__
 #define __GAMELAYER_H__
 
+#include <map>
 #include "cocos2d.h"
 #include "GameSprite.h"
 
@@ -16,6 +17,7 @@ typedef enum {
     NORMAL,
     CHAOS
 } element;
+
 
 class GameLayer : public cocos2d::CCLayer
 {
