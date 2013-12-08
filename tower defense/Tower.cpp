@@ -7,19 +7,46 @@
 //
 
 #include "Tower.h"
-
-Tower *TowerFactory(towerType type, int x, int y) {
-    switch (type) {
-    //    BASIC_L1: return new basicL1(int x, int y);
-   //     BASIC_L1: return new basicL2(int x, int y);
-        default: return NULL;
-    }
-}
+#include "Map.h"
 
 void Tower::upgrade(towerType type) {
     // destroy tower and replace it by a new one
 }
 
-Tower::~Tower() {
-    // destroy sprite all other shit
+ Tower::~Tower() {
+     // destroy sprite all other shit
+ }
+
+/*infoTower *Tower::stat(towerType type) {
+   
+    infoTower *ret = new infoTower;
+
+//return infoTower {10, 10, 10, NORMAL} ;
+switch (type) {
+        case BASIC_L1:
+            
+            ret->dmg = 10;
+            ret->price = 7;
+            ret->type = NORMAL;
+            ret->range = 600;
+            break;
+        default:
+            ret->dmg = 0;
+            ret->price = 0;
+            ret->type = NORMAL;
+            ret->range = 0;
+            break;
+    }
+    return (ret);
+    
+}*/
+
+Tower *TowerFactory(towerType type) {
+
+    std::cout << "><><><><" << std::endl;
+    switch (type) {
+        case BASIC_L1: return (new TBasic1());
+   //    case BASIC_L1: return new basicL2();
+        default: return NULL;
+    }
 }

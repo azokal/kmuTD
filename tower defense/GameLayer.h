@@ -2,10 +2,10 @@
 #define __GAMELAYER_H__
 
 #include <map>
-#include "cocos2d.h"
-#include "GameSprite.h"
+//#include "cocos2d.h"
+//#include "GameSprite.h"
 
-using namespace cocos2d;
+//using namespace cocos2d;
 
 typedef enum {
     LIGHT,
@@ -19,7 +19,7 @@ typedef enum {
 } element;
 
 
-class GameLayer : public cocos2d::CCLayer
+/* class GameLayer : public cocos2d::CCLayer
 {
     bool _began;
     int _life;
@@ -49,6 +49,6 @@ public:
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
     void update (float dt);
     void nextWave();
-};
+}; */
 
 #endif // __GAMELAYER_H__

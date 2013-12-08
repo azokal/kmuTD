@@ -13,11 +13,12 @@
 #include "Tower.h"
 
 class Map {
-    Tower ***_map;
     
 public:
+    Tower *_map[14][18];
     Map();
     ~Map();
+    void  NewTower(towerType t, int x, int y);
 };
 
 #endif /* defined(__tower_defense__Map__) */

@@ -28,6 +28,7 @@ typedef struct {
 } infoTower;
 
 class Tower {
+protected:
     int _price;
     int _dmg;
     int _range;
@@ -35,12 +36,37 @@ class Tower {
     element _type;
     // add target pointer
     std::vector<towerType> upgradeList;
-    GameSprite *_sprite;
+  //  GameSprite *_sprite;
 public:
-    static infoTower stat();
-    virtual void shoot() = 0;
+   static infoTower *stat(towerType);
+   virtual void shoot() = 0;
     void upgrade(towerType);
+    Tower() {
+            std::cout << "canard ?" << std::endl;
+    }
     ~Tower();
 };
+
+class Filer :public Tower {
+    void shoot() {
+    }
+};
+
+class TBasic1 : public Tower {
+public:
+    TBasic1() {
+        std::cout << "canard ?2" << std::endl;
+        _price = 7;
+        _dmg = 16;
+        _range = 300;
+        _fireRate = 0.1;
+        _type = NORMAL;
+    }
+    void shoot() {
+      // to fill
+    }
+};
+
+Tower *TowerFactory(towerType type);
 
 #endif /* defined(__tower_defense__Tower__) */
