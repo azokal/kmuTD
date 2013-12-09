@@ -25,6 +25,7 @@ typedef enum {
     int _life;
     int _level;
     CCArray *_towers;
+    CCArray *_mobs;
     int     _money;
     CCSize _screenSize;
 	CCPoint _lastPosTouch;
