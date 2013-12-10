@@ -48,7 +48,7 @@ typedef enum {
 
 
 
-class Mob {
+class Mob : public CCObject {
 protected:
     element _elem;
     int _life;

@@ -43,7 +43,7 @@ bool GameLayer::init()
     _screenSize = CCDirector::sharedDirector()->getWinSize();
     this->setTouchEnabled(true);
     
-    Map *terrain = new Map();
+  terrain = new Map();
     
     for (int i = 0; i < 32; i++) {
         for (int n = 0; n < 24; n++) {
@@ -52,8 +52,6 @@ bool GameLayer::init()
             this->addChild(img);
         }
     }
-    
-    terrain->NewTower(BASIC_L1, 0, 0);
     for (int i = 0; i < 18; i++) {
         for (int n = 0; n < 14; n++) {
             if (terrain->_map[n][i] == NULL) {
@@ -105,14 +103,28 @@ bool GameLayer::init()
     this->schedule(schedule_selector(GameLayer::update));
 	_lastPosTouch = CCPointZero;
     
-    // faire un CCArray de monstre
-    // faire un CCArray de tower avec pour size 104
-    
+    _mobs = CCArray::createWithCapacity(20);
+    _towers = CCArray::createWithCapacity(104);
+    _mobs->retain();
+    _towers->retain();
     return true;
+}
+
+void GameLayer::createMob(CCObject *n) {
+    printf("canard\n");
+    _mobs->addObject(MobFactory((mobType)_level));
 }
 
 void GameLayer::nextWave() {
     // load next wave
+
+  //  CCTimer::timerWithTarget(<#cocos2d::CCObject *pTarget#>, <#SEL_SCHEDULE pfnSelector#>, <#float fSeconds#>)
+  //  CCAction *wave = CCRepeat::create(CCSequence::create(CCCallFuncO::create(this, schedule_selector(GameLayer::createMob), NULL), CCDelayTime::create(1.f), NULL), 15);
+  //  wave->retain();
+            printf("canard1\n");
+    
+//    terrain->_map[2][2]->_sprite->runAction(wave);
+    
     _level += 1;
     if (_level != 0)
         _money += _money * 2 / 100;
@@ -220,23 +232,14 @@ void GameLayer::update (float dt) {
     if (_began == false) {
         return;
     }
-    
-    // boucle de jeu (update dans cocos2D) a adapter pou que ca tinne dans le update, basically all while will be if
-    int level = 0;
-    
-    // when in update
-    while (level < 30 /* && life > 0*/) { // modify to a if in cocos and call endGame() and replace with gamelayer variable
-        for (int i = 0; i < 15; i++) //  nombre arbitraire a adapter, creation de niveau
-            MobFactory((mobType)level); //  stocker le retour dans le CCArray, mettre un delai entre chaque creation de mob., should be moved to next wave
-        // add mob array empty condition empty to continue something like :
-        // while (mobArray.lenght != 0)
-        {
-            // boucle de jeu
-        }
-        level++; // call nextWave in gameLayer
-        //std::cout << "level " << level << " finished" << std::endl;
-    }
-    endGame();
+
+    if (_level > 30 || _life <= 0) // end of game
+        endGame();
+        
+        // les movement et tir a appeller ici
+        
+        if (_mobs->count() == 0)
+            nextWave();
 }
 
 void GameLayer::winLife() {
@@ -244,12 +247,13 @@ void GameLayer::winLife() {
 }
 
 void GameLayer::endGame() {
-    if (_life > 0) {
-        _life--;
-    }
-    if (_life > 0) {
-        return;
-    }
     _isEndGame = true;
     _began = false;
+    // re-init level, life, money
+    // clean all board
+    if (_life > 0) {
+        // win message
+    } else {
+        // loose message
+    }
 }

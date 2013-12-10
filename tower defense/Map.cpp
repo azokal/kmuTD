@@ -33,7 +33,7 @@ Map::Map() {
         _map[0][i] = road;
         _map[1][i] = road;
     }
-    for (int i = 2; i < 6; i++) {
+    for (int i = 2; i < 6; i++) { 
         _map[i][8] = road;
         _map[i][9] = road;
     }

@@ -58,7 +58,7 @@ typedef struct {
     element type;
 } infoTower;
 
-class Tower {
+class Tower : public CCObject {
 protected:
     int _price;
     int _dmg;
@@ -67,8 +67,8 @@ protected:
     element _type;
     // add target pointer
     std::vector<towerType> upgradeList;
-  //  GameSprite *_sprite;
 public:
+    GameSprite *_sprite;
    static infoTower *stat(towerType);
    void shoot(); // need to implement for all basic tower that only have type and cie
     void upgrade(towerType);
@@ -78,6 +78,7 @@ public:
         _range = range;
         _fireRate = fireRate;
         _type = type;
+        _sprite = new GameSprite();
     }
     ~Tower();
 };

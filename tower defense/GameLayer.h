@@ -5,6 +5,8 @@
 #include "cocos2d.h"
 #include "GameSprite.h"
 
+class Map;
+
 using namespace cocos2d;
 
 typedef enum {
@@ -37,6 +39,7 @@ class GameLayer : public cocos2d::CCLayer
     void endGame();
     void winLife();
 public:
+    Map *terrain;
     CCArray *_bullets;
     ~GameLayer();
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -51,6 +54,7 @@ public:
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
     void update(float dt);
     void nextWave();
+    void createMob(CCObject *n);
 };
 
 #endif // __GAMELAYER_H__
