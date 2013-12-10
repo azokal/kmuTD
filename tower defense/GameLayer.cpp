@@ -48,7 +48,7 @@ bool GameLayer::init()
     for (int i = 0; i < 32; i++) {
         for (int n = 0; n < 24; n++) {
             GameSprite *img = GameSprite::gameSpriteWithFile("sand.png");
-            img->setPosition(ccp(16+ i * 32, -16 + _screenSize.height - n * 32));
+            img->setPosition(ccp(i * 32 + 16, -16 + _screenSize.height - n * 32));
             this->addChild(img);
         }
     }
@@ -58,17 +58,42 @@ bool GameLayer::init()
         for (int n = 0; n < 14; n++) {
             if (terrain->_map[n][i] == NULL) {
                 GameSprite *img = GameSprite::gameSpriteWithFile("grass_top.png");
-                img->setPosition(ccp(16 + 32 * 9 + n * 32, -16 + _screenSize.height - 32 * 3 - i * 32));
+                img->setPosition(ccp(32 * 9 + n * 32 + 16, -16 + _screenSize.height - 32 * 3 - i * 32));
                 this->addChild(img);
             }
             else {
                 GameSprite *img = GameSprite::gameSpriteWithFile("dirt.png");
-                img->setPosition(ccp(16 + 32 * 9 + n * 32, -16 + _screenSize.height - 32 * 3 - i * 32));
+                img->setPosition(ccp(32 * 9 + n * 32 + 16, -16 + _screenSize.height - 32 * 3 - i * 32));
                 this->addChild(img);
             }
         }
         std::cout << std::endl;
     }
+    
+    GameSprite *img = GameSprite::gameSpriteWithFile("compo.png");
+    img->setPosition(ccp(32 * 9, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("dark.png");
+    img->setPosition(ccp(32 * 11, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("light.png");
+    img->setPosition(ccp(32 * 13, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("earth.png");
+    img->setPosition(ccp(32 * 15, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("fire.png");
+    img->setPosition(ccp(32 * 17, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("nature.png");
+    img->setPosition(ccp(32 * 19, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("water.png");
+    img->setPosition(ccp(32 * 21, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
+    img = GameSprite::gameSpriteWithFile("gold.png");
+    img->setPosition(ccp(32 * 23, -16 + _screenSize.height - 32 * 22));
+    this->addChild(img);
     
     _text = CCLabelTTF::create("Touch to Begin", "Arial", 60);
     _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height * 0.5));
