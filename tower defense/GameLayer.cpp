@@ -43,6 +43,32 @@ bool GameLayer::init()
     _screenSize = CCDirector::sharedDirector()->getWinSize();
     this->setTouchEnabled(true);
     
+    Map *terrain = new Map();
+    
+    for (int i = 0; i < 32; i++) {
+        for (int n = 0; n < 24; n++) {
+            GameSprite *img = GameSprite::gameSpriteWithFile("sand.png");
+            img->setPosition(ccp(16+ i * 32, -16 + _screenSize.height - n * 32));
+            this->addChild(img);
+        }
+    }
+    
+    terrain->NewTower(BASIC_L1, 0, 0);
+    for (int i = 0; i < 18; i++) {
+        for (int n = 0; n < 14; n++) {
+            if (terrain->_map[n][i] == NULL) {
+                GameSprite *img = GameSprite::gameSpriteWithFile("grass_top.png");
+                img->setPosition(ccp(16 + 32 * 9 + n * 32, -16 + _screenSize.height - 32 * 3 - i * 32));
+                this->addChild(img);
+            }
+            else {
+                GameSprite *img = GameSprite::gameSpriteWithFile("dirt.png");
+                img->setPosition(ccp(16 + 32 * 9 + n * 32, -16 + _screenSize.height - 32 * 3 - i * 32));
+                this->addChild(img);
+            }
+        }
+        std::cout << std::endl;
+    }
     
     _text = CCLabelTTF::create("Touch to Begin", "Arial", 60);
     _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height * 0.5));
@@ -53,19 +79,6 @@ bool GameLayer::init()
     
     this->schedule(schedule_selector(GameLayer::update));
 	_lastPosTouch = CCPointZero;
-    
-    Map *terrain = new Map();
-    
-    terrain->NewTower(BASIC_L1, 0, 0);
-    for (int i = 0; i < 18; i++) {
-        for (int n = 0; n < 14; n++) {
-            if (terrain->_map[n][i] == NULL)
-                std::cout << 0 << " ";
-            else
-                std::cout << 1 << " ";
-        }
-        std::cout << std::endl;
-    }
     
     // faire un CCArray de monstre
     // faire un CCArray de tower avec pour size 104
