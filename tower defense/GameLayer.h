@@ -32,6 +32,7 @@ class GameLayer : public cocos2d::CCLayer
     bool _isEndGame;
     CCLabelTTF *_text;
     CCAction *_action;
+    element _toConstruct;
     
     void endGame();
     void winLife();

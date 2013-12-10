@@ -19,10 +19,10 @@ CCScene* GameLayer::scene()
     
     // 'layer' is an autorelease object
     GameLayer *layer = GameLayer::create();
-
+    
     // add layer as a child to scene
     scene->addChild(layer);
-
+    
     // return the scene
     return scene;
 }
@@ -69,7 +69,7 @@ bool GameLayer::init()
         }
         std::cout << std::endl;
     }
-    
+    _toConstruct = CHAOS;
     GameSprite *img = GameSprite::gameSpriteWithFile("compo.png");
     img->setPosition(ccp(32 * 9, -16 + _screenSize.height - 32 * 22));
     this->addChild(img);
@@ -128,6 +128,62 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
         touch = (CCTouch*) (*i);
         if(touch) {
 			tap = touch->getLocation();
+            if (tap.x > 32 * 9 && tap.x < 32 * 23 && tap.y < _screenSize.height - 32 * 3 && tap.y > _screenSize.height - 32 * 21) {
+                int x = (tap.x - 32 * 9) / 32;
+                int y = (-tap.y + 32 * 21) / 32;
+                printf("x = %d y = %d\n", x, y);
+                //MODIF !!!! TIM BLABLABLA JJIMDAK
+            }
+            else {
+                if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == NORMAL)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = NORMAL;
+                }
+                if (tap.x > 32 * 11 - 16 && tap.x < 32 * 12 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == DARK)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = DARK;
+                }
+                if (tap.x > 32 * 13 - 16 && tap.x < 32 * 14 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == LIGHT)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = LIGHT;
+                }
+                if (tap.x > 32 * 15 - 16 && tap.x < 32 * 16 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == EARTH)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = EARTH;
+                }
+                if (tap.x > 32 * 17 - 16 && tap.x < 32 * 18 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == FIRE)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = FIRE;
+                }
+                if (tap.x > 32 * 19 - 16 && tap.x < 32 * 20 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == NATURE)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = NATURE;
+                }
+                if (tap.x > 32 * 21 - 16 && tap.x < 32 * 22 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    if (_toConstruct == WATER)
+                        _toConstruct = CHAOS;
+                    else
+                        _toConstruct = WATER;
+                }
+                if (tap.x > 32 * 23 - 16 && tap.x < 32 * 24 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    /* if (_toConstruct == NORMAL)
+                     _toConstruct = CHAOS;
+                     else
+                     _toConstruct = NORMAL;*/
+                }
+            }
 			_lastPosTouch = tap;
 		}
 	}
@@ -143,7 +199,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
         _money = 300;
         _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height - 60));
         
-
+        
         _began = true;
     }
 }
@@ -151,7 +207,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
 void GameLayer::ccTouchesEnded(CCSet* pTouches, CCEvent* event) {
 	CCSetIterator i;
 	CCTouch* touch;
-
+    
     for( i = pTouches->begin(); i != pTouches->end(); i++) {
 		touch = (CCTouch*) (*i);
         if(touch) {
@@ -178,7 +234,7 @@ void GameLayer::update (float dt) {
             // boucle de jeu
         }
         level++; // call nextWave in gameLayer
-        std::cout << "level " << level << " finished" << std::endl;
+        //std::cout << "level " << level << " finished" << std::endl;
     }
     endGame();
 }
