@@ -37,6 +37,7 @@ bool GameLayer::init()
     {
         return false;
     }
+    _isCompleteWave = true;
     srandom(getpid());
     _began = false;
     _isEndGame = false;
@@ -65,7 +66,6 @@ bool GameLayer::init()
                 this->addChild(img);
             }
         }
-        std::cout << std::endl;
     }
     _toConstruct = CHAOS;
     GameSprite *img = GameSprite::gameSpriteWithFile("compo.png");
@@ -110,20 +110,25 @@ bool GameLayer::init()
     return true;
 }
 
-void GameLayer::createMob(CCObject *n) {
+void GameLayer::createMob( CCTime delta ) {
+    static int countMob;
     printf("canard\n");
+    Mob *m = MobFactory((mobType)_level);
     _mobs->addObject(MobFactory((mobType)_level));
+    ++countMob;
+    if (countMob == 15) {
+        _isCompleteWave = true;
+        countMob = 0;
+    }
+    //this->addChild(m->);
 }
 
 void GameLayer::nextWave() {
     // load next wave
 
-  //  CCTimer::timerWithTarget(<#cocos2d::CCObject *pTarget#>, <#SEL_SCHEDULE pfnSelector#>, <#float fSeconds#>)
-  //  CCAction *wave = CCRepeat::create(CCSequence::create(CCCallFuncO::create(this, schedule_selector(GameLayer::createMob), NULL), CCDelayTime::create(1.f), NULL), 15);
-  //  wave->retain();
-            printf("canard1\n");
-    
-//    terrain->_map[2][2]->_sprite->runAction(wave);
+    this->schedule(schedule_selector( GameLayer::createMob ), 1.f, 14.f, 0.f);
+
+    _isCompleteWave = false;
     
     _level += 1;
     if (_level != 0)
@@ -238,7 +243,7 @@ void GameLayer::update (float dt) {
         
         // les movement et tir a appeller ici
         
-        if (_mobs->count() == 0)
+        if (_mobs->count() == 0 && _isCompleteWave == true)
             nextWave();
 }
 

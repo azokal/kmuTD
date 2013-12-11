@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "GameLayer.h"
-//#include "GameSprite.h"
+#include "GameSprite.h"
 
 typedef enum {
     MOBL1,
@@ -54,7 +54,9 @@ protected:
     int _life;
     int _bounty;
     float _velocity; // time needed to do 100 unit move
-   // GameSprite *_sprite;
+    
+public:
+    GameSprite *_sprite;
 
 public:
     Mob(element type, int life, int bounty) {
@@ -62,6 +64,9 @@ public:
         _life = life;
         _bounty = bounty;
         _velocity = 1.0;
+        _sprite = GameSprite::gameSpriteWithFile("water.png");
+        //_sprite->setPosition(ccp());
+        //_sprite->runAction(CCRepeat)
     }
     ~Mob() {}
     void move();

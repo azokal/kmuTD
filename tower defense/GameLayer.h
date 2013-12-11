@@ -32,6 +32,7 @@ class GameLayer : public cocos2d::CCLayer
     CCSize _screenSize;
 	CCPoint _lastPosTouch;
     bool _isEndGame;
+    bool _isCompleteWave;
     CCLabelTTF *_text;
     CCAction *_action;
     element _toConstruct;
@@ -54,7 +55,7 @@ public:
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
     void update(float dt);
     void nextWave();
-    void createMob(CCObject *n);
+    void createMob( CCTime delta );
 };
 
 #endif // __GAMELAYER_H__
