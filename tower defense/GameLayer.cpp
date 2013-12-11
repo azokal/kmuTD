@@ -120,7 +120,7 @@ void GameLayer::createMob( CCTime delta ) {
         _isCompleteWave = true;
         countMob = 0;
     }
-    //this->addChild(m->);
+    this->addChild(m->_sprite);
 }
 
 void GameLayer::nextWave() {
