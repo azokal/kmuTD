@@ -77,5 +77,5 @@ Map::Map() {
 }
 
 void  Map::NewTower(towerType type, int x, int y) {
-   _map[x][y] = TowerFactory(type);// need to adapt in function oif screen size : x / sizeofacase
+   _map[x][y] = TowerFactory(type, x, y);
 }

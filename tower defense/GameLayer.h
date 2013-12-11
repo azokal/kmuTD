@@ -20,6 +20,42 @@ typedef enum {
     CHAOS
 } element;
 
+typedef enum {
+    BASIC_L1,
+    BASIC_L2,
+    BASIC_L3,
+    FIRE_L1,
+    FIRE_L2,
+    FIRE_L3,
+    FIRE_L4,
+    FIRE_L5,
+    NATURE_L1,
+    NATURE_L2,
+    NATURE_L3,
+    NATURE_L4,
+    NATURE_L5,
+    EARTH_L1,
+    EARTH_L2,
+    EARTH_L3,
+    EARTH_L4,
+    EARTH_L5,
+    WATER_L1,
+    WATER_L2,
+    WATER_L3,
+    WATER_L4,
+    WATER_L5,
+    LIGHT_L1,
+    LIGHT_L2,
+    LIGHT_L3,
+    LIGHT_L4,
+    LIGHT_L5,
+    DARK_L1,
+    DARK_L2,
+    DARK_L3,
+    DARK_L4,
+    DARK_L5,
+    PURE
+} towerType;
 
 class GameLayer : public cocos2d::CCLayer
 {
@@ -35,7 +71,7 @@ class GameLayer : public cocos2d::CCLayer
     bool _isCompleteWave;
     CCLabelTTF *_text;
     CCAction *_action;
-    element _toConstruct;
+    towerType _toConstruct;
     
     void endGame();
     void winLife();

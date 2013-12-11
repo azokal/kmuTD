@@ -67,7 +67,7 @@ bool GameLayer::init()
             }
         }
     }
-    _toConstruct = CHAOS;
+    _toConstruct = PURE;
     GameSprite *img = GameSprite::gameSpriteWithFile("compo.png");
     img->setPosition(ccp(32 * 9, -16 + _screenSize.height - 32 * 22));
     this->addChild(img);
@@ -135,8 +135,6 @@ void GameLayer::nextWave() {
         _money += _money * 2 / 100;
 }
 
-
-
 void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
 	CCSetIterator i;
 	CCTouch* touch;
@@ -148,57 +146,59 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
             if (tap.x > 32 * 9 && tap.x < 32 * 23 && tap.y < _screenSize.height - 32 * 3 && tap.y > _screenSize.height - 32 * 21) {
                 int x = (tap.x - 32 * 9) / 32;
                 int y = (-tap.y + 32 * 21) / 32;
-                printf("x = %d y = %d\n", x, y);
-                //MODIF !!!! TIM BLABLABLA JJIMDAK
-            }
-            else {
+
+                    if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
+                    terrain->NewTower(_toConstruct, x, y);
+                    this->addChild(this->terrain->_map[x][y]->_sprite);
+                    }
+                } else {
                 if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == NORMAL)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == BASIC_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = NORMAL;
+                        _toConstruct = BASIC_L1;
                 }
                 if (tap.x > 32 * 11 - 16 && tap.x < 32 * 12 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == DARK)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == DARK_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = DARK;
+                        _toConstruct = DARK_L1;
                 }
                 if (tap.x > 32 * 13 - 16 && tap.x < 32 * 14 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == LIGHT)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == LIGHT_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = LIGHT;
+                        _toConstruct = LIGHT_L1;
                 }
                 if (tap.x > 32 * 15 - 16 && tap.x < 32 * 16 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == EARTH)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == EARTH_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = EARTH;
+                        _toConstruct = EARTH_L1;
                 }
                 if (tap.x > 32 * 17 - 16 && tap.x < 32 * 18 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == FIRE)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == FIRE_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = FIRE;
+                        _toConstruct = FIRE_L1;
                 }
                 if (tap.x > 32 * 19 - 16 && tap.x < 32 * 20 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == NATURE)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == NATURE_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = NATURE;
+                        _toConstruct = NATURE_L1;
                 }
                 if (tap.x > 32 * 21 - 16 && tap.x < 32 * 22 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    if (_toConstruct == WATER)
-                        _toConstruct = CHAOS;
+                    if (_toConstruct == WATER_L1)
+                        _toConstruct = PURE;
                     else
-                        _toConstruct = WATER;
+                        _toConstruct = WATER_L1;
                 }
                 if (tap.x > 32 * 23 - 16 && tap.x < 32 * 24 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    /* if (_toConstruct == NORMAL)
-                     _toConstruct = CHAOS;
+                    /* if (_toConstruct == BASIC_l1)
+                     _toConstruct = PURE;
                      else
-                     _toConstruct = NORMAL;*/
+                     _toConstruct = BASIC_L1;*/
                 }
             }
 			_lastPosTouch = tap;
