@@ -8,7 +8,6 @@
 
 #include "Tower.h"
 #include "Map.h"
-#include "Mob.h"
 
 void Tower::upgrade(towerType type) {
     // destroy tower and replace it by a new one
@@ -41,27 +40,25 @@ switch (type) {
     
 }
 
-float square (float x)
-{
-    return x * x;
-}
-
-// distance between a and b
-float distance (float x1, float y1, float x2, float y2)
-{
-    return square(x1 - x2) + square(y1 - y2);
-}
-
 void Tower::shoot(CCArray *mobs) {
     CCObject *r;
-    CCARRAY_FOREACH(mobs, r) {
-        float centerDistance = distance(((Mob*)r)->_sprite->getPosition().x,
-                                      ((Mob*)r)->_sprite->getPosition().y,
-                                      _sprite->getPosition().x,
-                                      _sprite->getPosition().y);
-        printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40 + _range);
-        if (centerDistance <= 40 + _range)
-            printf("touchez !\n");
+    if (_target == NULL) {
+        CCARRAY_FOREACH(mobs, r) {
+            float centerDistance = ccpDistance(((Mob*)r)->_sprite->getPosition(), _sprite->getPosition());
+            printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40.0 + _range);
+            if (centerDistance <= 18.0 + _range)
+                _target = ((Mob*)r);
+        }
+    } else {
+        float centerDistance = ccpDistance(_target->_sprite->getPosition(), _sprite->getPosition());
+        if (centerDistance > 18.0 + _range)
+            _target = NULL;
+    }
+    if (_target != NULL) {
+        bool t = _target->looseLife(_dmg, _type);
+        printf("%d\n", t);
+        if (t == true)
+            _target = NULL;
     }
 }
 

@@ -12,15 +12,18 @@ void Mob::endPath() {
     
 }
 
-void Mob::looseLife(float damage, element elem) {
+bool Mob::looseLife(float damage, element elem) {
     if ((elem + 1) % 6 == _elem)
         _life -= damage * 2;
-    if ((elem - 1) % 6 == _elem)
+    else if ((elem - 1) % 6 == _elem)
         _life -= damage / 2;
-    if (elem == CHAOS)
-        _life -= damage;
-    if (_elem != NORMAL && elem == NORMAL)
+    else if (_elem != NORMAL && elem == NORMAL)
         _life -= damage * 0.8;
+    else
+        _life -= damage;
+    if (_life <= 0)
+        return true;
+    return false;
 }
 
 
@@ -62,17 +65,20 @@ Mob *MobFactory(mobType type, GameLayer *g) {
     }
 }
 
-void UndeadMob::looseLife(float damage, element elem) {
+bool UndeadMob::looseLife(float damage, element elem) {
     if ((elem + 1) % 6 == _elem)
         _life -= damage * 2;
-    if ((elem - 1) % 6 == _elem)
+    else if ((elem - 1) % 6 == _elem)
         _life -= damage / 2;
-    if (elem == CHAOS)
-        _life -= damage;
-    if (_elem != NORMAL && elem == NORMAL)
+    else if (_elem != NORMAL && elem == NORMAL)
         _life -= damage * 0.8;
+    else
+        _life -= damage;
     if (_life <= 0 && _revive == false) {
         _revive = true;
         _life = _oLife;
     }
+    if (_life < 0)
+        return true;
+    return false;
 }

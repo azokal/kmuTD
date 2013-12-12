@@ -90,7 +90,7 @@ public:
         _g->_money += _bounty;
     }
     void endPath();
-    void looseLife(float damage, element elem);
+    bool looseLife(float damage, element elem);
 };
 
 class FastMob : public Mob {
@@ -127,8 +127,7 @@ public:
     UndeadMob(element type, int life, int bounty, GameLayer *g) :
     Mob(type, life, bounty, g) {
         _revive = false;
-    }
-    void looseLife(float damage, element elem);
+    } bool looseLife(float damage, element elem);
 };
 
 Mob *MobFactory(mobType type, GameLayer *g);

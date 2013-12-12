@@ -116,6 +116,7 @@ void GameLayer::looseLife(CCObject* sender) {
 
 void GameLayer::createMob( CCTime delta ) {
     static int countMob;
+    
     Mob *m = MobFactory((mobType)_level, this);
     _mobs->addObject(m);
     ++countMob;

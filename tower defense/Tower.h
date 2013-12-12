@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include "GameLayer.h"
+#include "Mob.h"
 
 typedef struct {
     int price;
@@ -27,6 +28,7 @@ protected:
     int _range;
     float _fireRate;
     element _type;
+    Mob *_target;
     // add target pointer
     std::vector<towerType> upgradeList;
 public:
@@ -40,7 +42,8 @@ public:
         _range = range;
         _fireRate = fireRate;
         _type = type;
-        _sprite = GameSprite::gameSpriteWithFile(sprite.c_str());
+        _target = NULL;
+        _sprite = GameSprite::gameSpriteWithFile(   sprite.c_str());
         _sprite->setPosition(ccp(32 * 9 + x * 32 + 16, -16 + CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - y * 32));
         _sprite->retain();
     }
