@@ -240,11 +240,13 @@ void GameLayer::update (float dt) {
 
     if (_level > 30 || _life <= 0) // end of game
         endGame();
-        
-        // les movement et tir a appeller ici
-        
-        if (_mobs->count() == 0 && _isCompleteWave == true)
-            nextWave();
+    
+    CCObject *r;
+    CCARRAY_FOREACH(_towers, r) {
+        ((Tower *)r)->shoot();
+    }
+    if (_mobs->count() == 0 && _isCompleteWave == true)
+        nextWave();
 }
 
 void GameLayer::winLife() {
