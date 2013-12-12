@@ -34,7 +34,7 @@ public:
    static infoTower *stat(towerType);
    void shoot(CCArray *mobs); // need to implement for all basic tower that only have type and cie
     void upgrade(towerType);
-    Tower(int price, int dmg, int range, float fireRate, element type, std::string sprite, int x, int y) {
+    Tower(int price, int dmg, int range, float fireRate, element type, std::string sprite, int x, int y, std::vector<towerType> *upgradeList) {
         _price = price;
         _dmg = dmg;
         _range = range;
@@ -50,17 +50,12 @@ public:
 class Filer :public Tower {
   public:
     Filer() :
-    Tower(0,0,0,10, NORMAL, "dirt.png", 0, 0) {
+    Tower(0,0,0,10, NORMAL, "dirt.png", 0, 0,  new std::vector<towerType>) {
     }
     void shoot() {
     }
 };
 
-Tower *TowerFactory(towerType type, int x, int y
-                    
-                    
-                    
-                    
-                    );
+Tower *TowerFactory(towerType type, int x, int y);
 
 #endif /* defined(__tower_defense__Tower__) */

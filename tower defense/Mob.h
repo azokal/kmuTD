@@ -117,7 +117,6 @@ public:
         CCARRAY_FOREACH(_g->_mobs, m) {
             ((Mob *)m)->_life += ((Mob *)m)->_oLife / 5;
         }
-         // heall all other alive mob, we will need to have a way of access to this list, probably putting it on global variable
     }
 };
 
