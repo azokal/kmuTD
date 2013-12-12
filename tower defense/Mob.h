@@ -51,19 +51,21 @@ typedef enum {
 class Mob : public CCObject {
 protected:
     element _elem;
-    int _life;
     int _bounty;
-    float _velocity; // time needed to do 100 unit move
+    float _velocity; // speed of the mob
+    GameLayer *_g;
     
 public:
+    int _life;
+    int _oLife;
     GameSprite *_sprite;
-
-public:
-    Mob(element type, int life, int bounty) {
+    Mob(element type, int life, int bounty, GameLayer *g) {
         _elem = type;
         _life = life;
+        _oLife = life;
         _bounty = bounty;
         _velocity = 1.0;
+        this->_g = g;
         _sprite = GameSprite::gameSpriteWithFile("water.png");
         _sprite->setPosition(ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32));
         _sprite->runAction(CCRepeatForever::create((CCActionInterval*)CCSequence::create(
@@ -81,17 +83,20 @@ public:
                                               CCMoveTo::create(4.5f / _velocity, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
                                               CCMoveTo::create(2.0f / _velocity, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32)),
                                               CCPlace::create(ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32)),
+                                                                                         CCCallFunc::create(g,  callfunc_selector(GameLayer::looseLife)),
                                               NULL)));
     }
-    ~Mob() {}
-    void move();
+    ~Mob() {
+        _g->_money += _bounty;
+    }
+    void endPath();
     void looseLife(float damage, element elem);
 };
 
 class FastMob : public Mob {
  public:
-    FastMob(element type, int life, int bounty) :
-    Mob(type, life, bounty) {
+    FastMob(element type, int life, int bounty, GameLayer *g) :
+    Mob(type, life, bounty, g) {
         _velocity = 1.5;
     }
     void effect() {}
@@ -99,30 +104,33 @@ class FastMob : public Mob {
 
 class HealMob : public Mob {
 public:
-    HealMob(element type, int life, int bounty) :
-    Mob(type, life, bounty) {
+    HealMob(element type, int life, int bounty, GameLayer *g) :
+    Mob(type, life, bounty, g) {
         _elem = type;
         _life = life;
         _bounty = bounty;
     }
     
     ~HealMob() {
+        CCObject *m;
+        
+        CCARRAY_FOREACH(_g->_mobs, m) {
+            ((Mob *)m)->_life += ((Mob *)m)->_oLife / 5;
+        }
          // heall all other alive mob, we will need to have a way of access to this list, probably putting it on global variable
     }
 };
 
 class UndeadMob : public Mob {
     bool _revive;
-    int _oLife;
 public:
-    UndeadMob(element type, int life, int bounty) :
-    Mob(type, life, bounty) {
-        _oLife = life;
+    UndeadMob(element type, int life, int bounty, GameLayer *g) :
+    Mob(type, life, bounty, g) {
         _revive = false;
     }
     void looseLife(float damage, element elem);
 };
 
-Mob *MobFactory(mobType type);
+Mob *MobFactory(mobType type, GameLayer *g);
 
 #endif /* defined(__tower_defense__Mob__) */

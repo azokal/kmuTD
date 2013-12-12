@@ -63,8 +63,6 @@ class GameLayer : public cocos2d::CCLayer
     int _life;
     int _level;
     CCArray *_towers;
-    CCArray *_mobs;
-    int     _money;
     CCSize _screenSize;
 	CCPoint _lastPosTouch;
     bool _isEndGame;
@@ -76,7 +74,9 @@ class GameLayer : public cocos2d::CCLayer
     void endGame();
     void winLife();
 public:
+    int _money;
     Map *terrain;
+    CCArray *_mobs;
     CCArray *_bullets;
     ~GameLayer();
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)
@@ -92,6 +92,7 @@ public:
     void update(float dt);
     void nextWave();
     void createMob( CCTime delta );
+    void looseLife(CCObject* sender);
 };
 
 #endif // __GAMELAYER_H__

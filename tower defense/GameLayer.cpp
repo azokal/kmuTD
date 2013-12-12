@@ -110,11 +110,14 @@ bool GameLayer::init()
     return true;
 }
 
+void GameLayer::looseLife(CCObject* sender) {
+    _life--;
+}
+
 void GameLayer::createMob( CCTime delta ) {
     static int countMob;
-    printf("canard\n");
-    Mob *m = MobFactory((mobType)_level);
-    _mobs->addObject(MobFactory((mobType)_level));
+    Mob *m = MobFactory((mobType)_level, this);
+    _mobs->addObject(m);
     ++countMob;
     if (countMob == 15) {
         _isCompleteWave = true;
@@ -248,6 +251,9 @@ void GameLayer::update (float dt) {
     }
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();
+    char tmp[50];
+    snprintf(tmp , 49, "%d", _life);
+    _text->setString(tmp);
 }
 
 void GameLayer::winLife() {
