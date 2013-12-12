@@ -148,8 +148,9 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                 int y = (-tap.y + 32 * 21) / 32;
 
                     if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
-                    terrain->NewTower(_toConstruct, x, y);
-                    this->addChild(this->terrain->_map[x][y]->_sprite);
+                        terrain->NewTower(_toConstruct, x, y);
+                        _towers->addObject(this->terrain->_map[x][y]);
+                        this->addChild(this->terrain->_map[x][y]->_sprite);
                     }
                 } else {
                 if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
@@ -243,7 +244,7 @@ void GameLayer::update (float dt) {
     
     CCObject *r;
     CCARRAY_FOREACH(_towers, r) {
-        ((Tower *)r)->shoot();
+        ((Tower *)r)->shoot(_mobs);
     }
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();

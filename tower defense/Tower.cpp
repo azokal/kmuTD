@@ -8,6 +8,7 @@
 
 #include "Tower.h"
 #include "Map.h"
+#include "Mob.h"
 
 void Tower::upgrade(towerType type) {
     // destroy tower and replace it by a new one
@@ -40,8 +41,28 @@ switch (type) {
     
 }
 
-void shoot() {
-    
+float square (float x)
+{
+    return x * x;
+}
+
+// distance between a and b
+float distance (float x1, float y1, float x2, float y2)
+{
+    return square(x1 - x2) + square(y1 - y2);
+}
+
+void Tower::shoot(CCArray *mobs) {
+    CCObject *r;
+    CCARRAY_FOREACH(mobs, r) {
+        float centerDistance = distance(((Mob*)r)->_sprite->getPosition().x,
+                                      ((Mob*)r)->_sprite->getPosition().y,
+                                      _sprite->getPosition().x,
+                                      _sprite->getPosition().y);
+        printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40 + _range);
+        if (centerDistance <= 40 + _range)
+            printf("touchez !\n");
+    }
 }
 
 Tower *TowerFactory(towerType type, int x, int y) {

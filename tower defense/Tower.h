@@ -32,7 +32,7 @@ protected:
 public:
     GameSprite *_sprite;
    static infoTower *stat(towerType);
-   void shoot(); // need to implement for all basic tower that only have type and cie
+   void shoot(CCArray *mobs); // need to implement for all basic tower that only have type and cie
     void upgrade(towerType);
     Tower(int price, int dmg, int range, float fireRate, element type, std::string sprite, int x, int y) {
         _price = price;
