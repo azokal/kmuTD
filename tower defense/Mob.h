@@ -67,19 +67,19 @@ public:
         _sprite = GameSprite::gameSpriteWithFile("water.png");
         _sprite->setPosition(ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32));
         _sprite->runAction(CCRepeatForever::create((CCActionInterval*)CCSequence::create(
-                                              CCMoveTo::create(2.0f, ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
-                                              CCMoveTo::create(1.5f, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
-                                              CCMoveTo::create(5.0f, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 9 * 32)),
-                                              CCMoveTo::create(3.0f, ccp(32 * 9 + 5 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 9 * 32)),
-                                              CCMoveTo::create(1.5f, ccp(32 * 9 + 5 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 7 * 32)),
-                                              CCMoveTo::create(3.0f, ccp(32 * 9 + 9 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 7 * 32)),
-                                              CCMoveTo::create(4.5f, ccp(32 * 9 + 9 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 13 * 32)),
-                                              CCMoveTo::create(6.0f, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 13 * 32)),
-                                              CCMoveTo::create(3.0f, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 17 * 32)),
-                                              CCMoveTo::create(8.5f, ccp(32 * 9 + 13 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 17 * 32)),
-                                              CCMoveTo::create(11.0f, ccp(32 * 9 + 13 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
-                                              CCMoveTo::create(4.5f, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
-                                              CCMoveTo::create(2.0f, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32)),
+                                              CCMoveTo::create(2.0f / _velocity, ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
+                                              CCMoveTo::create(1.5f / _velocity, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
+                                              CCMoveTo::create(5.0f / _velocity, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 9 * 32)),
+                                              CCMoveTo::create(3.0f / _velocity, ccp(32 * 9 + 5 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 9 * 32)),
+                                              CCMoveTo::create(1.5f / _velocity, ccp(32 * 9 + 5 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 7 * 32)),
+                                              CCMoveTo::create(3.0f / _velocity, ccp(32 * 9 + 9 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 7 * 32)),
+                                              CCMoveTo::create(4.5f / _velocity, ccp(32 * 9 + 9 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 13 * 32)),
+                                              CCMoveTo::create(6.0f / _velocity, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 13 * 32)),
+                                              CCMoveTo::create(3.0f / _velocity, ccp(32 * 9 + 1 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 17 * 32)),
+                                              CCMoveTo::create(8.5f / _velocity, ccp(32 * 9 + 13 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 17 * 32)),
+                                              CCMoveTo::create(11.0f / _velocity, ccp(32 * 9 + 13 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
+                                              CCMoveTo::create(4.5f / _velocity, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
+                                              CCMoveTo::create(2.0f / _velocity, ccp(32 * 9 + 7 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32)),
                                               CCPlace::create(ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32)),
                                               NULL)));
     }
