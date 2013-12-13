@@ -136,6 +136,7 @@ void GameLayer::createMob( CCTime delta ) {
     ++countMob;
     if (countMob == 15) {
         _isCompleteWave = true;
+        _level += 1;
         countMob = 0;
     }
     this->addChild(m->_sprite);
@@ -147,8 +148,6 @@ void GameLayer::nextWave() {
     this->schedule(schedule_selector( GameLayer::createMob ), 1.f, 14.f, 0.f);
 
     _isCompleteWave = false;
-    
-    _level += 1;
     if (_level != 0)
         _money += _money * 2 / 100;
 }
@@ -390,7 +389,7 @@ void GameLayer::update (float dt) {
     } else {
         _addButton->setVisible(false);
     }
-    if (_level > 30 || _life <= 0) // end of game
+    if ((_level >= 30 && _mobs->count() == 0 && _isCompleteWave == true)  || _life <= 0) // end of game
         endGame();
 
 }

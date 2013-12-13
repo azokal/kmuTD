@@ -82,7 +82,6 @@ bool UndeadMob::looseLife(float damage, element elem) {
         _revive = true;
         _life = _oLife;
     }
-    ccColor3B ccRed = {255,0,0};
     _sprite->runAction(CCTintBy::create(1, 255, 0, 0));
     if (_life < 0) {
         return true;
