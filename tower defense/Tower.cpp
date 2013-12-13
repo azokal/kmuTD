@@ -20,6 +20,9 @@ pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
 infoTower *Tower::stat(towerType type) {
    
 switch (type) {
+    case BASIC_L1: return new infoTower(16, 7, 57, NORMAL);
+    case BASIC_L2: return new infoTower(120, 37, 57, NORMAL);
+    case BASIC_L3: return new infoTower(600, 235, 57, NORMAL);
     case FIRE_L1: return new infoTower(24, 50, 57, FIRE);
     case FIRE_L2: return new infoTower(120, 175, 57, FIRE);
     case FIRE_L3: return new infoTower(600, 625, 57, FIRE);
@@ -95,37 +98,37 @@ Tower *TowerFactory(towerType type, int x, int y) {
     switch (type) {
         case BASIC_L1: return new Tower(16, 7, 57,  0.31, NORMAL, "compo.png", x, y, new std::vector<towerType>(BASIC_L2));
         case BASIC_L2: return new Tower(120, 37, 57, 0.31, NORMAL, "anormal.png", x, y, new std::vector<towerType>(BASIC_L3));
-        case BASIC_L3: return new Tower(600, 235, 57, 0.31, NORMAL, "rnormal.png", x, y, NULL);
+        case BASIC_L3: return new Tower(600, 235, 57, 0.31, NORMAL, "rnormal.png", x, y, new std::vector<towerType>);
         case FIRE_L1: return new Tower(24, 50, 57,  0.31, FIRE, "fire.png", x, y, new std::vector<towerType>(FIRE_L2));
         case FIRE_L2: return new Tower(120, 225, 57, 0.31, FIRE, "afire.png", x, y, new std::vector<towerType>(FIRE_L3));
         case FIRE_L3: return new Tower(600, 850, 57, 0.31, FIRE, "ffire.png", x, y, new std::vector<towerType>(FIRE_L4));
         case FIRE_L4: return new Tower(3000, 2975, 57, 0.31, FIRE, "rfire.png", x, y, new std::vector<towerType>(FIRE_L5));
-        case FIRE_L5: return new Tower(45000, 14200, 57, 0.31, FIRE, "pfire.png", x, y, NULL);
+        case FIRE_L5: return new Tower(45000, 14200, 57, 0.31, FIRE, "pfire.png", x, y, new std::vector<towerType>);
         case NATURE_L1: return new Tower(80, 50, 80,  0.66, NATURE, "nature.png", x, y, new std::vector<towerType>(NATURE_L2));
         case NATURE_L2: return new Tower(400, 225, 80,  0.66, NATURE, "anature.png", x, y, new std::vector<towerType>(NATURE_L3));
         case NATURE_L3: return new Tower(2000, 850, 80,  0.66, NATURE, "rnature.png", x, y, new std::vector<towerType>(NATURE_L4));
         case NATURE_L4: return new Tower(10000, 3000, 80,  0.66, NATURE, "fnature.png", x, y, new std::vector<towerType>(NATURE_L5));
-        case NATURE_L5: return new Tower(150000, 14200, 80,  0.66, NATURE, "pnature.png", x, y, NULL);
+        case NATURE_L5: return new Tower(150000, 14200, 80,  0.66, NATURE, "pnature.png", x, y, new std::vector<towerType>);
         case EARTH_L1: return new Tower(100, 50, 70,  1, EARTH, "earth.png", x, y, new std::vector<towerType>(EARTH_L2));
         case EARTH_L2: return new Tower(480, 225, 70,  1, EARTH, "aearth.png", x, y, new std::vector<towerType>(EARTH_L3));
         case EARTH_L3: return new Tower(2400, 850, 70,  1, EARTH, "rearth.png", x, y, new std::vector<towerType>(EARTH_L4));
         case EARTH_L4: return new Tower(12000, 2975, 70,  1, EARTH, "fearth.png", x, y, new std::vector<towerType>(EARTH_L5));
-        case EARTH_L5: return new Tower(180000, 14200, 70,  1, EARTH, "pearth.png", x, y, NULL);
+        case EARTH_L5: return new Tower(180000, 14200, 70,  1, EARTH, "pearth.png", x, y, new std::vector<towerType>);
         case WATER_L1: return new Tower(30, 50, 80,  0.31, WATER, "water.png", x, y, new std::vector<towerType>(WATER_L2));
         case WATER_L2: return new Tower(180, 225, 80,  0.31, WATER, "awater.png", x, y, new std::vector<towerType>(WATER_L3));
         case WATER_L3: return new Tower(900, 850, 80,  0.31, WATER, "rwater.png", x, y, new std::vector<towerType>(WATER_L4));
         case WATER_L4: return new Tower(4500, 2975, 80,  0.31, WATER, "fwater.png", x, y, new std::vector<towerType>(WATER_L5));
-        case WATER_L5: return new Tower(70000, 14200, 80,  0.31, WATER, "pwater.png", x, y, NULL);
+        case WATER_L5: return new Tower(70000, 14200, 80,  0.31, WATER, "pwater.png", x, y, new std::vector<towerType>);
         case LIGHT_L1: return new Tower(57, 50, 170,  0.66, LIGHT, "light.png", x, y, new std::vector<towerType>(LIGHT_L2));
         case LIGHT_L2: return new Tower(285, 225, 170,  0.66, LIGHT, "alight.png", x, y, new std::vector<towerType>(LIGHT_L3));
         case LIGHT_L3: return new Tower(1425, 850, 170,  0.66, LIGHT, "rlight.png", x, y, new std::vector<towerType>(LIGHT_L4));
         case LIGHT_L4: return new Tower(7125, 2975, 170,  0.66, LIGHT, "flight.png", x, y, new std::vector<towerType>(LIGHT_L5));
-        case LIGHT_L5: return new Tower(106875, 14200, 170,  0.66, LIGHT, "plight.png", x, y, NULL);
+        case LIGHT_L5: return new Tower(106875, 14200, 170,  0.66, LIGHT, "plight.png", x, y, new std::vector<towerType>);
         case DARK_L1: return new Tower(157, 50, 128,  1.5, DARK, "dark.png", x, y, new std::vector<towerType>(DARK_L2));
         case DARK_L2: return new Tower(785, 225, 128,  1.5, DARK, "adark.png", x, y, new std::vector<towerType>(DARK_L3));
         case DARK_L3: return new Tower(3925, 850, 128,  1.5, DARK, "rdark.png", x, y,  new std::vector<towerType>(DARK_L4));
         case DARK_L4: return new Tower(19625, 2975, 128,  1.5, DARK, "fdark.png", x, y,  new std::vector<towerType>(DARK_L5));
-        case DARK_L5: return new Tower(294375, 14200, 128,  1.5, DARK, "pdark.png", x, y,  NULL);
+        case DARK_L5: return new Tower(294375, 14200, 128,  1.5, DARK, "pdark.png", x, y,  new std::vector<towerType>);
         default: return NULL;
     }
 }
