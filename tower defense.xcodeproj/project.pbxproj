@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9A925C5185AF00A00C6664E /* adarkness.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925AD185AF00A00C6664E /* adarkness.png */; };
+		A9A925C6185AF00A00C6664E /* aearth.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925AE185AF00A00C6664E /* aearth.png */; };
+		A9A925C7185AF00A00C6664E /* afire.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925AF185AF00A00C6664E /* afire.png */; };
+		A9A925C8185AF00A00C6664E /* alight.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B0185AF00A00C6664E /* alight.png */; };
+		A9A925C9185AF00A00C6664E /* anature.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B1185AF00A00C6664E /* anature.png */; };
+		A9A925CA185AF00A00C6664E /* awater.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B2185AF00A00C6664E /* awater.png */; };
+		A9A925CB185AF00A00C6664E /* fdarkness.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B3185AF00A00C6664E /* fdarkness.png */; };
+		A9A925CC185AF00A00C6664E /* fearth.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B4185AF00A00C6664E /* fearth.png */; };
+		A9A925CD185AF00A00C6664E /* ffire.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B5185AF00A00C6664E /* ffire.png */; };
+		A9A925CE185AF00A00C6664E /* flight.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B6185AF00A00C6664E /* flight.png */; };
+		A9A925CF185AF00A00C6664E /* fnature.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B7185AF00A00C6664E /* fnature.png */; };
+		A9A925D0185AF00A00C6664E /* fwater.gif in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B8185AF00A00C6664E /* fwater.gif */; };
+		A9A925D1185AF00A00C6664E /* pdarkness.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925B9185AF00A00C6664E /* pdarkness.png */; };
+		A9A925D2185AF00A00C6664E /* pearth.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BA185AF00A00C6664E /* pearth.png */; };
+		A9A925D3185AF00A00C6664E /* pfire.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BB185AF00A00C6664E /* pfire.png */; };
+		A9A925D4185AF00A00C6664E /* plight.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BC185AF00A00C6664E /* plight.png */; };
+		A9A925D5185AF00A00C6664E /* pnature.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BD185AF00A00C6664E /* pnature.png */; };
+		A9A925D6185AF00A00C6664E /* pwater.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BE185AF00A00C6664E /* pwater.png */; };
+		A9A925D7185AF00A00C6664E /* rdarkness.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925BF185AF00A00C6664E /* rdarkness.png */; };
+		A9A925D8185AF00A00C6664E /* rearth.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C0185AF00A00C6664E /* rearth.png */; };
+		A9A925D9185AF00A00C6664E /* rfire.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C1185AF00A00C6664E /* rfire.png */; };
+		A9A925DA185AF00A00C6664E /* rlight.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C2185AF00A00C6664E /* rlight.png */; };
+		A9A925DB185AF00A00C6664E /* rnature.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C3185AF00A00C6664E /* rnature.png */; };
+		A9A925DC185AF00A00C6664E /* rwater.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C4185AF00A00C6664E /* rwater.png */; };
 		A9F1D783184DC93D004DB65F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D782184DC93D004DB65F /* QuartzCore.framework */; };
 		A9F1D785184DC93D004DB65F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D784184DC93D004DB65F /* OpenGLES.framework */; };
 		A9F1D787184DC93D004DB65F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D786184DC93D004DB65F /* OpenAL.framework */; };
@@ -220,6 +244,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9A925AD185AF00A00C6664E /* adarkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adarkness.png; sourceTree = "<group>"; };
+		A9A925AE185AF00A00C6664E /* aearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aearth.png; sourceTree = "<group>"; };
+		A9A925AF185AF00A00C6664E /* afire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = afire.png; sourceTree = "<group>"; };
+		A9A925B0185AF00A00C6664E /* alight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alight.png; sourceTree = "<group>"; };
+		A9A925B1185AF00A00C6664E /* anature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anature.png; sourceTree = "<group>"; };
+		A9A925B2185AF00A00C6664E /* awater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awater.png; sourceTree = "<group>"; };
+		A9A925B3185AF00A00C6664E /* fdarkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fdarkness.png; sourceTree = "<group>"; };
+		A9A925B4185AF00A00C6664E /* fearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fearth.png; sourceTree = "<group>"; };
+		A9A925B5185AF00A00C6664E /* ffire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ffire.png; sourceTree = "<group>"; };
+		A9A925B6185AF00A00C6664E /* flight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flight.png; sourceTree = "<group>"; };
+		A9A925B7185AF00A00C6664E /* fnature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fnature.png; sourceTree = "<group>"; };
+		A9A925B8185AF00A00C6664E /* fwater.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fwater.gif; sourceTree = "<group>"; };
+		A9A925B9185AF00A00C6664E /* pdarkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdarkness.png; sourceTree = "<group>"; };
+		A9A925BA185AF00A00C6664E /* pearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pearth.png; sourceTree = "<group>"; };
+		A9A925BB185AF00A00C6664E /* pfire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pfire.png; sourceTree = "<group>"; };
+		A9A925BC185AF00A00C6664E /* plight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plight.png; sourceTree = "<group>"; };
+		A9A925BD185AF00A00C6664E /* pnature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pnature.png; sourceTree = "<group>"; };
+		A9A925BE185AF00A00C6664E /* pwater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pwater.png; sourceTree = "<group>"; };
+		A9A925BF185AF00A00C6664E /* rdarkness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rdarkness.png; sourceTree = "<group>"; };
+		A9A925C0185AF00A00C6664E /* rearth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rearth.png; sourceTree = "<group>"; };
+		A9A925C1185AF00A00C6664E /* rfire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rfire.png; sourceTree = "<group>"; };
+		A9A925C2185AF00A00C6664E /* rlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rlight.png; sourceTree = "<group>"; };
+		A9A925C3185AF00A00C6664E /* rnature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rnature.png; sourceTree = "<group>"; };
+		A9A925C4185AF00A00C6664E /* rwater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rwater.png; sourceTree = "<group>"; };
 		A9F1D77F184DC93D004DB65F /* tower defense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tower defense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F1D782184DC93D004DB65F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A9F1D784184DC93D004DB65F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -737,6 +785,30 @@
 		A9F1D793184DC93D004DB65F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9A925AD185AF00A00C6664E /* adarkness.png */,
+				A9A925AE185AF00A00C6664E /* aearth.png */,
+				A9A925AF185AF00A00C6664E /* afire.png */,
+				A9A925B0185AF00A00C6664E /* alight.png */,
+				A9A925B1185AF00A00C6664E /* anature.png */,
+				A9A925B2185AF00A00C6664E /* awater.png */,
+				A9A925B3185AF00A00C6664E /* fdarkness.png */,
+				A9A925B4185AF00A00C6664E /* fearth.png */,
+				A9A925B5185AF00A00C6664E /* ffire.png */,
+				A9A925B6185AF00A00C6664E /* flight.png */,
+				A9A925B7185AF00A00C6664E /* fnature.png */,
+				A9A925B8185AF00A00C6664E /* fwater.gif */,
+				A9A925B9185AF00A00C6664E /* pdarkness.png */,
+				A9A925BA185AF00A00C6664E /* pearth.png */,
+				A9A925BB185AF00A00C6664E /* pfire.png */,
+				A9A925BC185AF00A00C6664E /* plight.png */,
+				A9A925BD185AF00A00C6664E /* pnature.png */,
+				A9A925BE185AF00A00C6664E /* pwater.png */,
+				A9A925BF185AF00A00C6664E /* rdarkness.png */,
+				A9A925C0185AF00A00C6664E /* rearth.png */,
+				A9A925C1185AF00A00C6664E /* rfire.png */,
+				A9A925C2185AF00A00C6664E /* rlight.png */,
+				A9A925C3185AF00A00C6664E /* rnature.png */,
+				A9A925C4185AF00A00C6664E /* rwater.png */,
 				AF6CE6F21856FF92007EB491 /* dirt.png */,
 				AF6CE6F818570A96007EB491 /* compo.png */,
 				AF6CE6F918570A96007EB491 /* dark.png */,
@@ -1649,6 +1721,30 @@
 				AF6CE70418570A96007EB491 /* nature.png in Resources */,
 				AF6CE70518570A96007EB491 /* water.png in Resources */,
 				AF6CE70718570FC7007EB491 /* gold.png in Resources */,
+				A9A925C5185AF00A00C6664E /* adarkness.png in Resources */,
+				A9A925C6185AF00A00C6664E /* aearth.png in Resources */,
+				A9A925C7185AF00A00C6664E /* afire.png in Resources */,
+				A9A925C8185AF00A00C6664E /* alight.png in Resources */,
+				A9A925C9185AF00A00C6664E /* anature.png in Resources */,
+				A9A925CA185AF00A00C6664E /* awater.png in Resources */,
+				A9A925CB185AF00A00C6664E /* fdarkness.png in Resources */,
+				A9A925CC185AF00A00C6664E /* fearth.png in Resources */,
+				A9A925CD185AF00A00C6664E /* ffire.png in Resources */,
+				A9A925CE185AF00A00C6664E /* flight.png in Resources */,
+				A9A925CF185AF00A00C6664E /* fnature.png in Resources */,
+				A9A925D0185AF00A00C6664E /* fwater.gif in Resources */,
+				A9A925D1185AF00A00C6664E /* pdarkness.png in Resources */,
+				A9A925D2185AF00A00C6664E /* pearth.png in Resources */,
+				A9A925D3185AF00A00C6664E /* pfire.png in Resources */,
+				A9A925D4185AF00A00C6664E /* plight.png in Resources */,
+				A9A925D5185AF00A00C6664E /* pnature.png in Resources */,
+				A9A925D6185AF00A00C6664E /* pwater.png in Resources */,
+				A9A925D7185AF00A00C6664E /* rdarkness.png in Resources */,
+				A9A925D8185AF00A00C6664E /* rearth.png in Resources */,
+				A9A925D9185AF00A00C6664E /* rfire.png in Resources */,
+				A9A925DA185AF00A00C6664E /* rlight.png in Resources */,
+				A9A925DB185AF00A00C6664E /* rnature.png in Resources */,
+				A9A925DC185AF00A00C6664E /* rwater.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
