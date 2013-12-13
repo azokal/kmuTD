@@ -42,23 +42,30 @@ switch (type) {
 
 void Tower::shoot(CCArray *mobs) {
     CCObject *r;
+    float closest = 0;
     if (_target == NULL) {
         CCARRAY_FOREACH(mobs, r) {
             float centerDistance = ccpDistance(((Mob*)r)->_sprite->getPosition(), _sprite->getPosition());
-            printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40.0 + _range);
-            if (centerDistance <= 18.0 + _range)
+            //printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40.0 + _range);
+            if ((closest == 0 || closest > centerDistance) && centerDistance <= 18.0 + _range) {
+                closest = centerDistance;
                 _target = ((Mob*)r);
+            }
         }
     } else {
-        float centerDistance = ccpDistance(_target->_sprite->getPosition(), _sprite->getPosition());
-        if (centerDistance > 18.0 + _range)
-            _target = NULL;
+        if (_mobs->containsObject(_target)) {
+            float centerDistance = ccpDistance(_target->_sprite->getPosition(), _sprite->getPosition());
+            if (centerDistance > 18.0 + _range)
+                _target = NULL;
+        }
     }
     if (_target != NULL) {
         bool t = _target->looseLife(_dmg, _type);
-        printf("%d\n", t);
-        if (t == true)
+        if (t == true) {
+            if (_mobs->containsObject(_target))
+                delete _target;
             _target = NULL;
+        }
     }
 }
 
@@ -91,11 +98,11 @@ Tower *TowerFactory(towerType type, int x, int y) {
         case LIGHT_L3: return new Tower(1425, 625, 1500,  0.66, LIGHT, "light.png", x, y, new std::vector<towerType>(LIGHT_L4));
         case LIGHT_L4: return new Tower(7125, 2125, 1500,  0.66, LIGHT, "light.png", x, y, new std::vector<towerType>(LIGHT_L5));
         case LIGHT_L5: return new Tower(106875, 11225, 1500,  0.66, LIGHT, "light.png", x, y, new std::vector<towerType>);
-        case DARK_L1: return new Tower(157, 50, 1125,  1.5, DARK, "dark.png", x, y, new std::vector<towerType>(DARK_L2));
-        case DARK_L2: return new Tower(785, 175, 1125,  1.5, DARK, "dark.png", x, y, new std::vector<towerType>(DARK_L3));
-        case DARK_L3: return new Tower(3925, 625, 1125,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>(DARK_L4));
-        case   DARK_L4: return new Tower(19625, 2125, 1125,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>(DARK_L5));
-        case DARK_L5: return new Tower(294375, 11225, 1125,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>);
+        case DARK_L1: return new Tower(157, 50, 128,  1.5, DARK, "dark.png", x, y, new std::vector<towerType>(DARK_L2));
+        case DARK_L2: return new Tower(785, 175, 128,  1.5, DARK, "dark.png", x, y, new std::vector<towerType>(DARK_L3));
+        case DARK_L3: return new Tower(3925, 625, 128,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>(DARK_L4));
+        case   DARK_L4: return new Tower(19625, 2125, 128,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>(DARK_L5));
+        case DARK_L5: return new Tower(294375, 11225, 128,  1.5, DARK, "dark.png", x, y,  new std::vector<towerType>);
         default: return NULL;
     }
 }

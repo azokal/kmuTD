@@ -12,6 +12,8 @@
 #include <iostream>
 #include "GameLayer.h"
 #include "GameSprite.h"
+ 
+extern CCArray *_mobs;
 
 typedef enum {
     MOBL1,
@@ -88,6 +90,9 @@ public:
     }
     ~Mob() {
         _g->_money += _bounty;
+        _sprite->stopAllActions();
+        _sprite->setVisible(false);
+        _mobs->removeObject(this);
     }
     void endPath();
     bool looseLife(float damage, element elem);
@@ -114,7 +119,7 @@ public:
     ~HealMob() {
         CCObject *m;
         
-        CCARRAY_FOREACH(_g->_mobs, m) {
+        CCARRAY_FOREACH(_mobs, m) {
             ((Mob *)m)->_life += ((Mob *)m)->_oLife / 5;
         }
     }

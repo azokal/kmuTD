@@ -76,7 +76,6 @@ class GameLayer : public cocos2d::CCLayer
 public:
     int _money;
     Map *terrain;
-    CCArray *_mobs;
     CCArray *_bullets;
     ~GameLayer();
     // Method 'init' in cocos2d-x returns bool, instead of 'id' in cocos2d-iphone (an object pointer)

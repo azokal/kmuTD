@@ -46,6 +46,7 @@ public:
         _sprite = GameSprite::gameSpriteWithFile(   sprite.c_str());
         _sprite->setPosition(ccp(32 * 9 + x * 32 + 16, -16 + CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - y * 32));
         _sprite->retain();
+        _sprite->runAction(CCRepeatForever::create((CCActionInterval*)CCSequence::create(CCCallFuncO::create(this, callfuncO_selector(Tower::shoot), _mobs), CCDelayTime::create(_fireRate), NULL)));
     }
     ~Tower();
 };

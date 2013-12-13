@@ -246,10 +246,10 @@ void GameLayer::update (float dt) {
     if (_level > 30 || _life <= 0) // end of game
         endGame();
     
-    CCObject *r;
-    CCARRAY_FOREACH(_towers, r) {
-        ((Tower *)r)->shoot(_mobs);
-    }
+    //CCObject *r;
+    //CCARRAY_FOREACH(_towers, r) {
+   //     ((Tower *)r)->shoot(_mobs);
+   // }
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();
     char tmp[50];

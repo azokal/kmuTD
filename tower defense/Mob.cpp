@@ -8,6 +8,8 @@
 
 #include "Mob.h"
 
+CCArray *_mobs;
+
 void Mob::endPath() {
     
 }
@@ -21,6 +23,7 @@ bool Mob::looseLife(float damage, element elem) {
         _life -= damage * 0.8;
     else
         _life -= damage;
+    _sprite->runAction(CCTintBy::create(1, 0, 255, 255));
     if (_life <= 0)
         return true;
     return false;
@@ -78,7 +81,10 @@ bool UndeadMob::looseLife(float damage, element elem) {
         _revive = true;
         _life = _oLife;
     }
-    if (_life < 0)
+    ccColor3B ccRed = {255,0,0};
+    _sprite->runAction(CCTintBy::create(1, 255, 0, 0));
+    if (_life < 0) {
         return true;
+    }
     return false;
 }
