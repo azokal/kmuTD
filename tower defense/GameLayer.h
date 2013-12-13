@@ -54,7 +54,8 @@ typedef enum {
     DARK_L3,
     DARK_L4,
     DARK_L5,
-    PURE
+    PURE,
+    SELL
 } towerType;
 
 class GameLayer : public cocos2d::CCLayer
@@ -89,6 +90,7 @@ public:
     virtual void ccTouchesBegan(CCSet* pTouches, CCEvent* event);
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
     void update(float dt);
+    void sellTower(int x, int y);
     void nextWave();
     void createMob( CCTime delta );
     void looseLife(CCObject* sender);

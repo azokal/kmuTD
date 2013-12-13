@@ -150,13 +150,16 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
             if (tap.x > 32 * 9 && tap.x < 32 * 23 && tap.y < _screenSize.height - 32 * 3 && tap.y > _screenSize.height - 32 * 21) {
                 int x = (tap.x - 32 * 9) / 32;
                 int y = (-tap.y + 32 * 21) / 32;
-
-                    if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
+                if (_toConstruct == SELL) {
+                    if (this->terrain->_map[x][y] != NULL) {
+                        this->sellTower(x, y);
+                    }
+                } else if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
                         terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
                     }
-                } else {
+            }
                 if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
                     if (_toConstruct == BASIC_L1)
                         _toConstruct = PURE;
@@ -200,15 +203,14 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                         _toConstruct = WATER_L1;
                 }
                 if (tap.x > 32 * 23 - 16 && tap.x < 32 * 24 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
-                    /* if (_toConstruct == BASIC_l1)
-                     _toConstruct = PURE;
+                     if (_toConstruct == SELL)
+                         _toConstruct = PURE;
                      else
-                     _toConstruct = BASIC_L1;*/
+                         _toConstruct = SELL;
                 }
             }
 			_lastPosTouch = tap;
 		}
-	}
     if (_began == false) {
         if (_isEndGame == true) {
             _bullets->autorelease();
@@ -236,6 +238,11 @@ void GameLayer::ccTouchesEnded(CCSet* pTouches, CCEvent* event) {
             
   		}
     }
+}
+void GameLayer::sellTower(int x, int y) {
+    delete terrain->_map[x][y];
+    _towers->removeObject(terrain->_map[x][y]);
+    terrain->_map[x][y] = NULL;
 }
 
 void GameLayer::update (float dt) {

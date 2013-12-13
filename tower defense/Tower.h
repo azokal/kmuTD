@@ -14,11 +14,17 @@
 #include "GameLayer.h"
 #include "Mob.h"
 
-typedef struct {
+typedef struct infoT {
     int price;
     int dmg;
     int range;
     element type;
+    infoT(int p, int d, int r, element t) {
+        price = p;
+        dmg = d;
+        range = r;
+        type = t;
+    }
 } infoTower;
 
 class Tower : public CCObject {

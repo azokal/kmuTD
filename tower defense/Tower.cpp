@@ -14,27 +14,17 @@ void Tower::upgrade(towerType type) {
 }
 
  Tower::~Tower() {
-     // destroy sprite all other thing
+     _sprite->setVisible(false);
+     _sprite->stopAllActions();
+     _sprite->release();
  }
 
 infoTower *Tower::stat(towerType type) {
    
-    infoTower *ret = new infoTower;
 
-//return infoTower {10, 10, 10, NORMAL} ;
+    return new infoTower(10, 7, 10, NORMAL);
 switch (type) {
-        case BASIC_L1:
-            ret->dmg = 10;
-            ret->price = 7;
-            ret->type = NORMAL;
-            ret->range = 600;
-            break;
-        default:
-            ret->dmg = 0;
-            ret->price = 0;
-            ret->type = NORMAL;
-            ret->range = 0;
-            break;
+        
     }
     return (ret);
     
