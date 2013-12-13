@@ -156,10 +156,11 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                     }
                 } else if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
                     infoTower *s =  Tower::stat(_toConstruct);
-                    if (s != NULL) {
+                    if (s != NULL && s->price <= _money) {
                         _money -= s->price;
                         delete s;
-                    }                                                                       
+                    } else
+                        return ;
                     terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
