@@ -159,11 +159,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
             if (tap.x > 32 * 9 && tap.x < 32 * 23 && tap.y < _screenSize.height - 32 * 3 && tap.y > _screenSize.height - 32 * 21) {
                 int x = (tap.x - 32 * 9) / 32;
                 int y = (-tap.y + 32 * 21) / 32;
-                if (_toConstruct == SELL) {
-                    if (this->terrain->_map[x][y] != NULL) {
-                        this->sellTower(x, y);
-                    }
-                } else if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
+                if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL && _toConstruct != SELL) {
                     infoTower *s =  Tower::stat(_toConstruct);
                     if (s != NULL && s->price <= _money) {
                         _money -= s->price;
@@ -173,10 +169,15 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                     terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
-                } else if (this->terrain->_map[x][y] != NULL && this->terrain->_map[x][y] == this->terrain->_map[2][2]) {
+                } else if (this->terrain->_map[x][y] != NULL && this->terrain->_map[x][y] != this->terrain->_map[2][2]) {
+                    printf("TOTO\n");
                     _isTowerSelect = true;
                     _towerY = y;
                     _towerX = x;
+                } else if (_toConstruct == SELL) {
+                    if (this->terrain->_map[x][y] != NULL) {
+                        this->sellTower(x, y);
+                    }
                 }
             }
                 if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
@@ -338,9 +339,10 @@ void GameLayer::update (float dt) {
         sprintf(tmp, "");
         _desc->setString(tmp);
     }
+
     if (_isTowerSelect) {
-        if (terrain->_map[_towerX][_towerY]->upgradeList != NULL) {
-        towerType t = terrain->_map[_towerX][_towerY]->upgradeList[0];
+        if (terrain->_map[_towerX][_towerY]->upgradeList->size() != 0) {
+        towerType t = terrain->_map[_towerX][_towerY]->upgradeList->at(0);
         infoTower *i = Tower::stat(t);
         std::string s = "";
     switch (i->type) {
@@ -370,7 +372,7 @@ void GameLayer::update (float dt) {
             break;
             
     }
-    sprintf(tmp, "Tower Info\nDamage: %d\nRange: %d\nType: %s\nPrice: %d", i->dmg, i->range, s.c_str(), i->price);
+    sprintf(tmp, "Tower upgrade info\nDamage: %d\nRange: %d\nType: %s\nPrice: %d", i->dmg, i->range, s.c_str(), i->price);
     _desc->setString(tmp);
         }
 }
