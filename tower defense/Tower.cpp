@@ -11,10 +11,6 @@
 
 pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
 
-void Tower::upgrade(towerType type) {
-    // destroy tower and replace it by a new one
-}
-
  Tower::~Tower() {
      _sprite->setVisible(false);
      _sprite->stopAllActions();
@@ -65,7 +61,6 @@ void Tower::shoot(CCArray *mobs) {
     if (_target == NULL) {
         CCARRAY_FOREACH(mobs, r) {
             float centerDistance = ccpDistance(((Mob*)r)->_sprite->getPosition(), _sprite->getPosition());
-            //printf("x = %f, y = %f, center = %f; radius = %f\n", ((Mob*)r)->_sprite->getPosition().x, ((Mob*)r)->_sprite->getPosition().y, centerDistance, 40.0 + _range);
             if ((closest == 0 || closest > centerDistance) && centerDistance <= 18.0 + _range) {
                 closest = centerDistance;
                 _target = ((Mob*)r);

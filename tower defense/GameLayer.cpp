@@ -254,6 +254,19 @@ void GameLayer::sellTower(int x, int y) {
     terrain->_map[x][y] = NULL;
 }
 
+void GameLayer::upgrade(towerType type, int x, int y) {
+    infoTower *s =  Tower::stat(_toConstruct);
+
+    delete terrain->_map[x][y];
+    if (s != NULL) {
+        _money -= s->price;
+        delete s;
+    }
+    terrain->NewTower(_toConstruct, x, y);
+    _towers->addObject(this->terrain->_map[x][y]);
+    this->addChild(this->terrain->_map[x][y]->_sprite);
+}
+
 void GameLayer::update (float dt) {
     if (_began == false) {
         return;
@@ -261,11 +274,6 @@ void GameLayer::update (float dt) {
 
     if (_level > 30 || _life <= 0) // end of game
         endGame();
-    
-    //CCObject *r;
-    //CCARRAY_FOREACH(_towers, r) {
-   //     ((Tower *)r)->shoot(_mobs);
-   // }
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();
     char tmp[1024];

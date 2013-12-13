@@ -89,6 +89,7 @@ public:
     CREATE_FUNC(GameLayer);
     virtual void ccTouchesBegan(CCSet* pTouches, CCEvent* event);
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
+    void upgrade(towerType type, int x, int y);
     void update(float dt);
     void sellTower(int x, int y);
     void nextWave();
