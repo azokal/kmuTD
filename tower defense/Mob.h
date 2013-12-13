@@ -92,7 +92,6 @@ public:
         _g->_money += _bounty;
         _sprite->stopAllActions();
         _sprite->setVisible(false);
-        _mobs->removeObject(this);
     }
     void endPath();
     bool looseLife(float damage, element elem);

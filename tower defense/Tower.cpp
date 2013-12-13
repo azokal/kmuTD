@@ -9,6 +9,8 @@
 #include "Tower.h"
 #include "Map.h"
 
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+
 void Tower::upgrade(towerType type) {
     // destroy tower and replace it by a new one
 }
@@ -31,6 +33,7 @@ switch (type) {
 }
 
 void Tower::shoot(CCArray *mobs) {
+    pthread_mutex_lock(&m);
     CCObject *r;
     float closest = 0;
     if (_target == NULL) {
@@ -50,13 +53,20 @@ void Tower::shoot(CCArray *mobs) {
         }
     }
     if (_target != NULL) {
-        bool t = _target->looseLife(_dmg, _type);
-        if (t == true) {
-            if (_mobs->containsObject(_target))
-                delete _target;
+        if (_mobs->containsObject(_target)) {
+            bool t = _target->looseLife(_dmg, _type);
+            if (t == true) {
+                if (_mobs->containsObject(_target)) {
+                    _mobs->removeObject(_target);
+                    delete _target;
+                }
+                _target = NULL;
+            }
+        } else {
             _target = NULL;
         }
     }
+    pthread_mutex_unlock(&m);
 }
 
 Tower *TowerFactory(towerType type, int x, int y) {

@@ -23,7 +23,8 @@ bool Mob::looseLife(float damage, element elem) {
         _life -= damage * 0.8;
     else
         _life -= damage;
-    _sprite->runAction(CCTintBy::create(1, 0, 255, 255));
+    if (_sprite)
+        _sprite->runAction(CCTintBy::create(0.5f, 0, 255, 255));
     if (_life <= 0)
         return true;
     return false;

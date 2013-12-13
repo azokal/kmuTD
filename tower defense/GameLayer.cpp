@@ -219,7 +219,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
             _bullets->retain();
         }
         _level = 0;
-        _life = 50;
+        _life = 1;
         _money = 300;
         _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height - 60));
         
@@ -259,8 +259,8 @@ void GameLayer::update (float dt) {
    // }
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();
-    char tmp[50];
-    snprintf(tmp , 49, "%d", _life);
+    char tmp[1024];
+    sprintf(tmp, "Gold: %d Life: %d Waves: %d/30", _money, _life, _level);
     _text->setString(tmp);
 }
 
@@ -273,9 +273,13 @@ void GameLayer::endGame() {
     _began = false;
     // re-init level, life, money
     // clean all board
+     _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height * 0.5));
+    char tmp[1024];
     if (_life > 0) {
-        // win message
+        sprintf(tmp, "You win!");
+        _text->setString(tmp);
     } else {
-        // loose message
+        sprintf(tmp, "You lost at wave %d!", _level);
+        _text->setString(tmp);
     }
 }
