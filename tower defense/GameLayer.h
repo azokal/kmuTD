@@ -68,7 +68,11 @@ class GameLayer : public cocos2d::CCLayer
 	CCPoint _lastPosTouch;
     bool _isEndGame;
     bool _isCompleteWave;
+    bool _isTowerSelect;
+    int _towerX;
+    int _towerY;
     CCLabelTTF *_text;
+    CCLabelTTF *_desc;
     CCAction *_action;
     towerType _toConstruct;
     
@@ -89,6 +93,7 @@ public:
     CREATE_FUNC(GameLayer);
     virtual void ccTouchesBegan(CCSet* pTouches, CCEvent* event);
     virtual void ccTouchesEnded(CCSet* pTouches, CCEvent* event);
+    void upgrade(towerType type, int x, int y);
     void update(float dt);
     void sellTower(int x, int y);
     void nextWave();

@@ -43,6 +43,9 @@ bool GameLayer::init()
     _isEndGame = false;
     _screenSize = CCDirector::sharedDirector()->getWinSize();
     this->setTouchEnabled(true);
+    _towerY = 0;
+    _towerX = 0;
+    _isTowerSelect = false;
     
   terrain = new Map();
     
@@ -95,7 +98,13 @@ bool GameLayer::init()
     
     _text = CCLabelTTF::create("Touch to Begin", "Arial", 60);
     _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height * 0.5));
+    _text->setColor(ccc3(0,0,0));
     this->addChild(_text);
+    
+    _desc = CCLabelTTF::create("", "Arial", 30);
+    _desc->setPosition(ccp(_screenSize.width * 0.85, _screenSize.height * 0.5));
+    _desc->setColor(ccc3(0,0,0));
+    this->addChild(_desc);
     
 	_bullets = CCArray::createWithCapacity(50);
     _bullets->retain();
@@ -156,58 +165,71 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                     }
                 } else if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
                     infoTower *s =  Tower::stat(_toConstruct);
-                    if (s != NULL) {
+                    if (s != NULL && s->price <= _money) {
                         _money -= s->price;
                         delete s;
-                    }                                                                       
+                    } else
+                        return ;
                     terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
-                    }
+                } else if (this->terrain->_map[x][y] != NULL && this->terrain->_map[x][y] == this->terrain->_map[2][2]) {
+                    _isTowerSelect = true;
+                    _towerY = y;
+                    _towerX = x;
+                }
             }
                 if (tap.x > 32 * 9 - 16 && tap.x < 32 * 10 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                    _isTowerSelect = false;
                     if (_toConstruct == BASIC_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = BASIC_L1;
                 }
                 if (tap.x > 32 * 11 - 16 && tap.x < 32 * 12 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                     if (_toConstruct == DARK_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = DARK_L1;
                 }
                 if (tap.x > 32 * 13 - 16 && tap.x < 32 * 14 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                     if (_toConstruct == LIGHT_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = LIGHT_L1;
                 }
                 if (tap.x > 32 * 15 - 16 && tap.x < 32 * 16 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect =false;
                     if (_toConstruct == EARTH_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = EARTH_L1;
                 }
                 if (tap.x > 32 * 17 - 16 && tap.x < 32 * 18 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                     if (_toConstruct == FIRE_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = FIRE_L1;
                 }
                 if (tap.x > 32 * 19 - 16 && tap.x < 32 * 20 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                     if (_toConstruct == NATURE_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = NATURE_L1;
                 }
                 if (tap.x > 32 * 21 - 16 && tap.x < 32 * 22 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                     if (_toConstruct == WATER_L1)
                         _toConstruct = PURE;
                     else
                         _toConstruct = WATER_L1;
                 }
                 if (tap.x > 32 * 23 - 16 && tap.x < 32 * 24 - 16 && tap.y < _screenSize.height - 32 * 22 && tap.y > _screenSize.height - 32 * 23) {
+                     _isTowerSelect = false;
                      if (_toConstruct == SELL)
                          _toConstruct = PURE;
                      else
@@ -224,7 +246,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
             _bullets->retain();
         }
         _level = 0;
-        _life = 1;
+        _life = 30;
         _money = 300;
         _text->setPosition(ccp(_screenSize.width * 0.5, _screenSize.height - 60));
         
@@ -254,6 +276,19 @@ void GameLayer::sellTower(int x, int y) {
     terrain->_map[x][y] = NULL;
 }
 
+void GameLayer::upgrade(towerType type, int x, int y) {
+    infoTower *s =  Tower::stat(_toConstruct);
+
+    delete terrain->_map[x][y];
+    if (s != NULL) {
+        _money -= s->price;
+        delete s;
+    }
+    terrain->NewTower(_toConstruct, x, y);
+    _towers->addObject(this->terrain->_map[x][y]);
+    this->addChild(this->terrain->_map[x][y]->_sprite);
+}
+
 void GameLayer::update (float dt) {
     if (_began == false) {
         return;
@@ -266,13 +301,81 @@ void GameLayer::update (float dt) {
     if (_mobs->count() == 0 && _isCompleteWave == true)
         nextWave();
     
+    if (_toConstruct != PURE && _toConstruct != SELL) {
+        infoTower *i = Tower::stat(_toConstruct);
+        std::string s = "";
+        switch (i->type) {
+            case LIGHT:
+                s = "Light";
+                break;
+            case DARK:
+                s = "Dark";
+                break;
+            case WATER:
+                s = "Water";
+                break;
+            case FIRE:
+                s = "Fire";
+                break;
+            case NATURE:
+                s = "Nature";
+                break;
+            case EARTH:
+                s = "Earth";
+                break;
+            case NORMAL:
+                s = "Normal";
+                break;
+            case CHAOS:
+                s = "Chaos";
+                break;
+
+        }
+        sprintf(tmp, "Tower Info\nDamage: %d\nRange: %d\nType: %s\nPrice: %d", i->dmg, i->range, s.c_str(), i->price);
+        _desc->setString(tmp);
+    }
+    else {
+        sprintf(tmp, "");
+        _desc->setString(tmp);
+    }
+    if (_isTowerSelect) {
+        if (terrain->_map[_towerX][_towerY]->upgradeList != NULL) {
+        towerType t = terrain->_map[_towerX][_towerY]->upgradeList[0];
+        infoTower *i = Tower::stat(t);
+        std::string s = "";
+    switch (i->type) {
+        case LIGHT:
+            s = "Light";
+            break;
+        case DARK:
+            s = "Dark";
+            break;
+        case WATER:
+            s = "Water";
+            break;
+        case FIRE:
+            s = "Fire";
+            break;
+        case NATURE:
+            s = "Nature";
+            break;
+        case EARTH:
+            s = "Earth";
+            break;
+        case NORMAL:
+            s = "Normal";
+            break;
+        case CHAOS:
+            s = "Chaos";
+            break;
+            
+    }
+    sprintf(tmp, "Tower Info\nDamage: %d\nRange: %d\nType: %s\nPrice: %d", i->dmg, i->range, s.c_str(), i->price);
+    _desc->setString(tmp);
+        }
+}
     if (_level > 30 || _life <= 0) // end of game
         endGame();
-    
-    //CCObject *r;
-    //CCARRAY_FOREACH(_towers, r) {
-   //     ((Tower *)r)->shoot(_mobs);
-   // }
 
 }
 

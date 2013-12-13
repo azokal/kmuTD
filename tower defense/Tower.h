@@ -34,14 +34,13 @@ protected:
     float _fireRate;
     Mob *_target;
     // add target pointer
-    std::vector<towerType> upgradeList;
 public:
+    std::vector<towerType> upgradeList;
     element _type;
     int _price;
     GameSprite *_sprite;
    static infoTower *stat(towerType);
    void shoot(CCArray *mobs); // need to implement for all basic tower that only have type and cie
-    void upgrade(towerType);
     Tower(int dmg, int price, int range, float fireRate, element type, std::string sprite, int x, int y, std::vector<towerType> *upgradeList) {
         _price = price;
         _dmg = dmg;
