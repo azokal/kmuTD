@@ -10,6 +10,7 @@
 #define __tower_defense__Mob__
 
 #include <iostream>
+#include <String>
 #include "GameLayer.h"
 #include "GameSprite.h"
  
@@ -61,14 +62,14 @@ public:
     int _life;
     int _oLife;
     GameSprite *_sprite;
-    Mob(element type, int life, int bounty, GameLayer *g) {
+    Mob(element type, int life, int bounty, GameLayer *g, std::string sprite) {
         _elem = type;
         _life = life;
         _oLife = life;
         _bounty = bounty;
         _velocity = 1.0;
         this->_g = g;
-        _sprite = GameSprite::gameSpriteWithFile("water.png");
+        _sprite = GameSprite::gameSpriteWithFile(sprite.c_str());
         _sprite->setPosition(ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 0.5 * 32));
         _sprite->runAction(CCRepeatForever::create((CCActionInterval*)CCSequence::create(
                                               CCMoveTo::create(2.0f / _velocity, ccp(32 * 9 + 3 * 32, CCDirector::sharedDirector()->getWinSize().height - 32 * 3 - 3 * 32)),
@@ -99,8 +100,8 @@ public:
 
 class FastMob : public Mob {
  public:
-    FastMob(element type, int life, int bounty, GameLayer *g) :
-    Mob(type, life, bounty, g) {
+    FastMob(element type, int life, int bounty, GameLayer *g, std::string sprite) :
+    Mob(type, life, bounty, g, sprite) {
         _velocity = 1.5;
     }
     void effect() {}
@@ -108,8 +109,8 @@ class FastMob : public Mob {
 
 class HealMob : public Mob {
 public:
-    HealMob(element type, int life, int bounty, GameLayer *g) :
-    Mob(type, life, bounty, g) {
+    HealMob(element type, int life, int bounty, GameLayer *g, std::string sprite) :
+    Mob(type, life, bounty, g, sprite) {
         _elem = type;
         _life = life;
         _bounty = bounty;
@@ -119,7 +120,7 @@ public:
         CCObject *m;
         
         CCARRAY_FOREACH(_mobs, m) {
-            ((Mob *)m)->_life += ((Mob *)m)->_oLife / 5;
+            ((Mob *)m)->_life += ((Mob *)m)->_oLife / 5; 
         }
     }
 };
@@ -127,10 +128,11 @@ public:
 class UndeadMob : public Mob {
     bool _revive;
 public:
-    UndeadMob(element type, int life, int bounty, GameLayer *g) :
-    Mob(type, life, bounty, g) {
+    UndeadMob(element type, int life, int bounty, GameLayer *g, std::string sprite) :
+    Mob(type, life, bounty, g, sprite) {
         _revive = false;
-    } bool looseLife(float damage, element elem);
+    }
+    bool looseLife(float damage, element elem);
 };
 
 Mob *MobFactory(mobType type, GameLayer *g);

@@ -20,6 +20,9 @@ pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
 infoTower *Tower::stat(towerType type) {
    
 switch (type) {
+    case BASIC_L1: return new infoTower(16, 7, 57, NORMAL);
+    case BASIC_L2: return new infoTower(120, 37, 57, NORMAL);
+    case BASIC_L3: return new infoTower(600, 235, 57, NORMAL);
     case FIRE_L1: return new infoTower(24, 50, 57, FIRE);
     case FIRE_L2: return new infoTower(120, 175, 57, FIRE);
     case FIRE_L3: return new infoTower(600, 625, 57, FIRE);
@@ -93,7 +96,9 @@ void Tower::shoot(CCArray *mobs) {
 Tower *TowerFactory(towerType type, int x, int y) {
 
     switch (type) {
-        // three basic tower
+        case BASIC_L1: return new Tower(16, 7, 57,  0.31, NORMAL, "compo.png", x, y, new std::vector<towerType>(1, BASIC_L2));
+        case BASIC_L2: return new Tower(120, 37, 57, 0.31, NORMAL, "anormal.png", x, y, new std::vector<towerType>(1, BASIC_L3));
+        case BASIC_L3: return new Tower(600, 235, 57, 0.31, NORMAL, "rnormal.png", x, y, new std::vector<towerType>);
         case FIRE_L1: return new Tower(24, 50, 57,  0.31, FIRE, "fire.png", x, y, new std::vector<towerType>(1, FIRE_L2));
         case FIRE_L2: return new Tower(120, 225, 57, 0.31, FIRE, "afire.png", x, y, new std::vector<towerType>(1, FIRE_L3));
         case FIRE_L3: return new Tower(600, 850, 57, 0.31, FIRE, "ffire.png", x, y, new std::vector<towerType>(1, FIRE_L4));
