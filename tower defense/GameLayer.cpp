@@ -106,6 +106,11 @@ bool GameLayer::init()
     _desc->setColor(ccc3(0,0,0));
     this->addChild(_desc);
     
+    _addButton = GameSprite::gameSpriteWithFile("add.png");
+    _addButton->setPosition(ccp(32 * 27 + 16, -16 + _screenSize.height - 32 * 15));
+    _addButton->setVisible(false);
+    this->addChild(_addButton);
+    
 	_bullets = CCArray::createWithCapacity(50);
     _bullets->retain();
     
@@ -169,8 +174,7 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                     terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
-                } else if (this->terrain->_map[x][y] != NULL && this->terrain->_map[x][y] != this->terrain->_map[2][2]) {
-                    printf("TOTO\n");
+                } else if (this->terrain->_map[x][y] != NULL && this->terrain->_map[x][y] != this->terrain->_map[2][2] && _toConstruct != SELL) {
                     _isTowerSelect = true;
                     _towerY = y;
                     _towerX = x;
@@ -236,6 +240,11 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                      else
                          _toConstruct = SELL;
                 }
+            if (tap.x > 32 * 27 && tap.x < 32 * 28 && tap.y <_screenSize.height - 32 * 15 && tap.y >_screenSize.height - 32 * 16) {
+                if (_addButton->isVisible()) {
+                    upgrade(terrain->_map[_towerX][_towerY]->upgradeList->at(0), _towerX, _towerY);
+                }
+            }
             }
 			_lastPosTouch = tap;
 		}
@@ -278,16 +287,16 @@ void GameLayer::sellTower(int x, int y) {
 }
 
 void GameLayer::upgrade(towerType type, int x, int y) {
-    infoTower *s =  Tower::stat(_toConstruct);
+    infoTower *s =  Tower::stat(type);
 
-    delete terrain->_map[x][y];
-    if (s != NULL) {
+    if (s != NULL && s->price <= _money) {
+        delete terrain->_map[x][y];
         _money -= s->price;
         delete s;
+        terrain->NewTower(type, x, y);
+        _towers->addObject(this->terrain->_map[x][y]);
+        this->addChild(this->terrain->_map[x][y]->_sprite);
     }
-    terrain->NewTower(_toConstruct, x, y);
-    _towers->addObject(this->terrain->_map[x][y]);
-    this->addChild(this->terrain->_map[x][y]->_sprite);
 }
 
 void GameLayer::update (float dt) {
@@ -341,6 +350,7 @@ void GameLayer::update (float dt) {
     }
 
     if (_isTowerSelect) {
+        _addButton->setVisible(true);
         if (terrain->_map[_towerX][_towerY]->upgradeList->size() != 0) {
         towerType t = terrain->_map[_towerX][_towerY]->upgradeList->at(0);
         infoTower *i = Tower::stat(t);
@@ -374,8 +384,12 @@ void GameLayer::update (float dt) {
     }
     sprintf(tmp, "Tower upgrade info\nDamage: %d\nRange: %d\nType: %s\nPrice: %d", i->dmg, i->range, s.c_str(), i->price);
     _desc->setString(tmp);
+        } else {
+            _addButton->setVisible(false);
         }
-}
+    } else {
+        _addButton->setVisible(false);
+    }
     if (_level > 30 || _life <= 0) // end of game
         endGame();
 

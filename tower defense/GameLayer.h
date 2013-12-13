@@ -63,6 +63,7 @@ class GameLayer : public cocos2d::CCLayer
     bool _began;
     int _life;
     int _level;
+    GameSprite *_addButton;
     CCArray *_towers;
     CCSize _screenSize;
 	CCPoint _lastPosTouch;

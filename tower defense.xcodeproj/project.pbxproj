@@ -241,6 +241,7 @@
 		AF6CE70518570A96007EB491 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = AF6CE6FE18570A96007EB491 /* water.png */; };
 		AF6CE70718570FC7007EB491 /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = AF6CE70618570FC7007EB491 /* gold.png */; };
 		AF7031BA185027560027FAA2 /* Mob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF7031B8185027560027FAA2 /* Mob.cpp */; };
+		AF7DE811185B06ED005F84E0 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = AF7DE810185B06ED005F84E0 /* add.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -716,6 +717,7 @@
 		AF6CE70618570FC7007EB491 /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
 		AF7031B8185027560027FAA2 /* Mob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mob.cpp; sourceTree = "<group>"; };
 		AF7031B9185027560027FAA2 /* Mob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mob.h; sourceTree = "<group>"; };
+		AF7DE810185B06ED005F84E0 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +816,7 @@
 				AF6CE6F918570A96007EB491 /* dark.png */,
 				AF6CE6FA18570A96007EB491 /* earth.png */,
 				AF6CE70618570FC7007EB491 /* gold.png */,
+				AF7DE810185B06ED005F84E0 /* add.png */,
 				AF6CE6FB18570A96007EB491 /* fire.png */,
 				AF6CE6FC18570A96007EB491 /* light.png */,
 				AF6CE6FD18570A96007EB491 /* nature.png */,
@@ -1745,6 +1748,7 @@
 				A9A925DA185AF00A00C6664E /* rlight.png in Resources */,
 				A9A925DB185AF00A00C6664E /* rnature.png in Resources */,
 				A9A925DC185AF00A00C6664E /* rwater.png in Resources */,
+				AF7DE811185B06ED005F84E0 /* add.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
