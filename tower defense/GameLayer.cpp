@@ -258,7 +258,14 @@ void GameLayer::update (float dt) {
     if (_began == false) {
         return;
     }
-
+    
+    char tmp[1024];
+    sprintf(tmp, "Gold: %d Life: %d Waves: %d/30", _money, _life, _level);
+    _text->setString(tmp);
+    
+    if (_mobs->count() == 0 && _isCompleteWave == true)
+        nextWave();
+    
     if (_level > 30 || _life <= 0) // end of game
         endGame();
     
@@ -266,11 +273,7 @@ void GameLayer::update (float dt) {
     //CCARRAY_FOREACH(_towers, r) {
    //     ((Tower *)r)->shoot(_mobs);
    // }
-    if (_mobs->count() == 0 && _isCompleteWave == true)
-        nextWave();
-    char tmp[1024];
-    sprintf(tmp, "Gold: %d Life: %d Waves: %d/30", _money, _life, _level);
-    _text->setString(tmp);
+
 }
 
 void GameLayer::winLife() {
@@ -291,4 +294,16 @@ void GameLayer::endGame() {
         sprintf(tmp, "You lost at wave %d!", _level);
         _text->setString(tmp);
     }
+    for (int x = 0; x < 14; x++) {
+        for (int y = 0; y < 18; y++) {
+            if (terrain->_map[x][y] != NULL && terrain->_map[x][y] != terrain->_map[2][2]) {
+                sellTower(x, y);
+            }
+        }
+    }
+    CCObject *r;
+    CCARRAY_FOREACH(_mobs, r) {
+        delete r;
+    }
+    _mobs->removeAllObjects();
 }
