@@ -155,7 +155,12 @@ void GameLayer::ccTouchesBegan(CCSet* pTouches, CCEvent* event) {
                         this->sellTower(x, y);
                     }
                 } else if (_toConstruct != PURE && this->terrain->_map[x][y] == NULL) {
-                        terrain->NewTower(_toConstruct, x, y);
+                    infoTower *s =  Tower::stat(_toConstruct);
+                    if (s != NULL) {
+                        _money -= s->price;
+                        delete s;
+                    }                                                                       
+                    terrain->NewTower(_toConstruct, x, y);
                         _towers->addObject(this->terrain->_map[x][y]);
                         this->addChild(this->terrain->_map[x][y]->_sprite);
                     }
@@ -240,6 +245,10 @@ void GameLayer::ccTouchesEnded(CCSet* pTouches, CCEvent* event) {
     }
 }
 void GameLayer::sellTower(int x, int y) {
+    if (terrain->_map[x][y]->_type == NORMAL)
+        _money += terrain->_map[x][y]->_price;
+    else
+        _money += terrain->_map[x][y]->_price * 0.8;
     delete terrain->_map[x][y];
     _towers->removeObject(terrain->_map[x][y]);
     terrain->_map[x][y] = NULL;

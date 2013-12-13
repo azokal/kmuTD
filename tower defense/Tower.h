@@ -19,7 +19,7 @@ typedef struct infoT {
     int dmg;
     int range;
     element type;
-    infoT(int p, int d, int r, element t) {
+    infoT(int d, int p, int r, element t) {
         price = p;
         dmg = d;
         range = r;
@@ -29,20 +29,20 @@ typedef struct infoT {
 
 class Tower : public CCObject {
 protected:
-    int _price;
     int _dmg;
     int _range;
     float _fireRate;
-    element _type;
     Mob *_target;
     // add target pointer
     std::vector<towerType> upgradeList;
 public:
+    element _type;
+    int _price;
     GameSprite *_sprite;
    static infoTower *stat(towerType);
    void shoot(CCArray *mobs); // need to implement for all basic tower that only have type and cie
     void upgrade(towerType);
-    Tower(int price, int dmg, int range, float fireRate, element type, std::string sprite, int x, int y, std::vector<towerType> *upgradeList) {
+    Tower(int dmg, int price, int range, float fireRate, element type, std::string sprite, int x, int y, std::vector<towerType> *upgradeList) {
         _price = price;
         _dmg = dmg;
         _range = range;
