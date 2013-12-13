@@ -31,6 +31,8 @@
 		A9A925DA185AF00A00C6664E /* rlight.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C2185AF00A00C6664E /* rlight.png */; };
 		A9A925DB185AF00A00C6664E /* rnature.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C3185AF00A00C6664E /* rnature.png */; };
 		A9A925DC185AF00A00C6664E /* rwater.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925C4185AF00A00C6664E /* rwater.png */; };
+		A9A925DF185AF1D900C6664E /* anormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925DD185AF1D900C6664E /* anormal.png */; };
+		A9A925E0185AF1D900C6664E /* rnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A925DE185AF1D900C6664E /* rnormal.png */; };
 		A9F1D783184DC93D004DB65F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D782184DC93D004DB65F /* QuartzCore.framework */; };
 		A9F1D785184DC93D004DB65F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D784184DC93D004DB65F /* OpenGLES.framework */; };
 		A9F1D787184DC93D004DB65F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F1D786184DC93D004DB65F /* OpenAL.framework */; };
@@ -268,6 +270,8 @@
 		A9A925C2185AF00A00C6664E /* rlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rlight.png; sourceTree = "<group>"; };
 		A9A925C3185AF00A00C6664E /* rnature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rnature.png; sourceTree = "<group>"; };
 		A9A925C4185AF00A00C6664E /* rwater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rwater.png; sourceTree = "<group>"; };
+		A9A925DD185AF1D900C6664E /* anormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anormal.png; sourceTree = "<group>"; };
+		A9A925DE185AF1D900C6664E /* rnormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rnormal.png; sourceTree = "<group>"; };
 		A9F1D77F184DC93D004DB65F /* tower defense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tower defense.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F1D782184DC93D004DB65F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A9F1D784184DC93D004DB65F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -785,6 +789,8 @@
 		A9F1D793184DC93D004DB65F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9A925DD185AF1D900C6664E /* anormal.png */,
+				A9A925DE185AF1D900C6664E /* rnormal.png */,
 				A9A925AD185AF00A00C6664E /* adarkness.png */,
 				A9A925AE185AF00A00C6664E /* aearth.png */,
 				A9A925AF185AF00A00C6664E /* afire.png */,
@@ -1745,6 +1751,8 @@
 				A9A925DA185AF00A00C6664E /* rlight.png in Resources */,
 				A9A925DB185AF00A00C6664E /* rnature.png in Resources */,
 				A9A925DC185AF00A00C6664E /* rwater.png in Resources */,
+				A9A925DF185AF1D900C6664E /* anormal.png in Resources */,
+				A9A925E0185AF1D900C6664E /* rnormal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
